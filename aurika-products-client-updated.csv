@@ -1,0 +1,81 @@
+﻿ID,Type,SKU,Name,Published,Is featured?,Visibility in catalog,Short description,Description,In stock?,Stock,Allow customer reviews?,Regular price,Sale price,Categories,Tags,Attribute 1 name,Attribute 1 value(s),Attribute 1 visible,Attribute 1 global,Attribute 2 name,Attribute 2 value(s),Attribute 2 visible,Attribute 2 global,Parent,Position,Images
+,simple,AUR-CND-01,Lavender Scented Candle,1,1,visible,Fragrance: Lavender | Burning Time: 24 Hours | Wax: Natural Paraffin Blend,"A beautifully crafted scented candle with a soothing lavender fragrance, designed to add warmth and elegance to your space.
+
+• Fragrance: French Lavender
+• Burn Time: 24 Hours
+• Wax Type: Premium Paraffin Blend
+• Variants Available: Rose, Sunflower, Lavender
+• Handcrafted in Pakistan",1,50,1,999,,Scented Candles,"Lavender, Scented Candles, Handmade, Calm",,,,,,,,,,0,
+,simple,AUR-CND-02,Sea Shell Ocean Candle (Artistic Edition),1,1,visible,Fragrance: Ocean | Burning Time: 10 Hours | Hand-carved Sea Shell Design,"An artistic sea-shell inspired candle with a refreshing ocean fragrance, designed to combine decorative coastal appeal with a fragrant sensory experience.
+
+• Fragrance: Crisp Ocean Breeze
+• Burn Time: 10 Hours
+• Design: Sea Shell Mold
+• Hand-poured with love",1,40,1,699,,Scented Candles,"Ocean, Sea Shell, Decorative, Coastal",,,,,,,,,,1,
+,variable,AUR-CND-03,Sea Shell Ocean Candle,1,1,visible,Fragrance: Ocean | Burning Time: 10 Hours | Available in 1 Piece or 2 Pieces Pack,"A charming sea-shell candle with a refreshing ocean fragrance, perfect for adding a decorative touch to your space. Choose single piece or value pair.
+
+• Fragrance: Ocean
+• Burn Time: 10 Hours (each)
+• Pack Options: 1 Piece (Rs. 599) / 2 Pieces (Rs. 1,100)",1,60,1,,,Scented Candles,"Sea Shell, Ocean, Pack Options",Pack Size,"1 Piece, 2 Pieces",1,1,,,,,,2,
+,variation,AUR-CND-03-1,Sea Shell Ocean Candle - 1 Piece,1,0,visible,,1 Piece Sea Shell Ocean Candle,1,30,1,599,,,,Pack Size,1 Piece,,1,,,,,AUR-CND-03,1,
+,variation,AUR-CND-03-2,Sea Shell Ocean Candle - 2 Pieces,1,0,visible,,2 Pieces Sea Shell Ocean Candle (Save Rs. 98),1,30,1,1100,,,,Pack Size,2 Pieces,,1,,,,,AUR-CND-03,2,
+,simple,AUR-CND-04,Sea Shell Ocean Candle Set (2 Pieces with Tray),1,1,visible,Includes 2 Sea Shell Candles + Luxury Decorative Tray | Fragrance: Ocean,"A two-piece sea-shell candle set with a decorative tray and refreshing ocean fragrance, perfect for gifting or elegant home décor.
+
+• What's Included: 2 Sea Shell Candles + 1 Matching Tray
+• Fragrance: Fresh Ocean Breeze
+• Burn Time: 10 Hours each
+• Ideal for gifting & living room display",1,25,1,1499,,Scented Candles,"Gift Set, Sea Shell, Tray, Ocean",,,,,,,,,,3,
+,simple,AUR-CND-05,Sea Shell Ocean Candle (Set of 2 Pieces),1,0,visible,Set of 2 Artistic Sea Shell Candles | Fragrance: Ocean | Burn Time: 10 Hours Each,"A set of two artistic sea-shell candles with a refreshing ocean fragrance, adding charm, warmth, and coastal elegance to your space.
+
+• Quantity: 2 Individual Candles
+• Fragrance: Ocean
+• Burn Time: 10 Hours (individual)",1,35,1,1299,,Scented Candles,"Sea Shell, Pair, Ocean",,,,,,,,,,4,
+,variable,AUR-CND-06,Peony Flower Scented Candle,1,1,visible,"Delicate flower-shaped candle. Available in Lavender, Rose, and Lily scents.","A delicate peony flower-shaped candle available in lavender, rose, and lily fragrances, perfect for adding a floral touch to your space.
+
+• Fragrance Options: Lavender, Rose, Lily
+• Burn Time: 6 Hours (each)
+• Pricing: 1 Piece (Rs. 199) / 3 Pieces Pack (Rs. 499)",1,80,1,,,Scented Candles,"Peony, Flower, Floral, Lavender, Rose",Pack Size,"1 Piece, 3 Pieces Pack",1,1,Fragrance,"Lavender, Rose, Lily",1,1,,5,
+,variation,AUR-CND-06-1,Peony Flower Scented Candle - 1 Piece,1,0,visible,,1 Piece Peony Flower Candle,1,40,1,199,,,,Pack Size,1 Piece,,1,Fragrance,Lavender,,1,AUR-CND-06,1,
+,variation,AUR-CND-06-3,Peony Flower Scented Candle - 3 Pieces Pack,1,0,visible,,3 Pieces Peony Flower Candle Pack (Save Rs. 98),1,40,1,499,,,,Pack Size,3 Pieces Pack,,1,Fragrance,Lavender,,1,AUR-CND-06,2,
+,variable,AUR-CND-07,Daisy Flower Candle,1,0,visible,"Charming daisy-shaped candle available in Rose, Lily, Lavender, Sunflower scents.","A charming daisy-shaped candle available in rose, lily, lavender, and sunflower fragrances.
+
+• Fragrances: Rose, Lily, Lavender, Sunflower
+• Burn Time: 5 Hours (individual)
+• Pricing: 1 Piece (Rs. 150) / 3 Pieces Pack (Rs. 399)",1,80,1,,,Scented Candles,"Daisy, Flower, Sunflower, Rose",Pack Size,"1 Piece, 3 Pieces Pack",1,1,Fragrance,"Rose, Lily, Lavender, Sunflower",1,1,,6,
+,variation,AUR-CND-07-1,Daisy Flower Candle - 1 Piece,1,0,visible,,1 Piece Daisy Flower Candle,1,40,1,150,,,,Pack Size,1 Piece,,1,Fragrance,Rose,,1,AUR-CND-07,1,
+,variation,AUR-CND-07-3,Daisy Flower Candle - 3 Pieces Pack,1,0,visible,,3 Pieces Daisy Flower Candle Pack,1,40,1,399,,,,Pack Size,3 Pieces Pack,,1,Fragrance,Rose,,1,AUR-CND-07,2,
+,variable,AUR-CND-08,Mini Heart Hand Candles,1,0,visible,"Cute heart-shaped candles in Rose, Ocean, or Lavender scents. Perfect for gifting.","Small heart-shaped candles available in rose, ocean, and lavender fragrances — perfect for gifting and adding a decorative touch to your space.
+
+• Scents: Rose, Ocean, Lavender
+• Burn Time: 5 Hours (individual)
+• Pricing: 1 Piece (Rs. 80) / 2 Pieces (Rs. 150) / 3 Pieces (Rs. 250)",1,100,1,,,Scented Candles,"Heart, Mini, Gift, Rose, Lavender",Pack Size,"1 Piece, 2 Pieces, 3 Pieces",1,1,Fragrance,"Rose, Ocean, Lavender",1,1,,7,
+,variation,AUR-CND-08-1,Mini Heart Hand Candles - 1 Piece,1,0,visible,,1 Piece Mini Heart Candle,1,30,1,80,,,,Pack Size,1 Piece,,1,Fragrance,Rose,,1,AUR-CND-08,1,
+,variation,AUR-CND-08-2,Mini Heart Hand Candles - 2 Pieces,1,0,visible,,2 Pieces Mini Heart Candles,1,35,1,150,,,,Pack Size,2 Pieces,,1,Fragrance,Rose,,1,AUR-CND-08,2,
+,variation,AUR-CND-08-3,Mini Heart Hand Candles - 3 Pieces,1,0,visible,,3 Pieces Mini Heart Candles,1,35,1,250,,,,Pack Size,3 Pieces,,1,Fragrance,Rose,,1,AUR-CND-08,3,
+,simple,AUR-CND-09,Aurika Rose Heart Candle,1,1,visible,Elegant heart-shaped candle with rich English Rose fragrance. Burn time: 15 hours.,"An elegant heart-shaped candle with a beautiful rose fragrance, designed to add warmth, charm, and elegance to your space.
+
+• Fragrance: Romantic Rose
+• Burn Time: 15 Hours
+• Shape: Sculpted Rose Heart
+• Hand-poured craftsmanship",1,40,1,999,,Scented Candles,"Rose, Heart, Luxury, Romance",,,,,,,,,,8,
+,simple,AUR-CND-10,Rose Flower Scented Candle,1,0,visible,Decorative rose-shaped candle with delicate rose aroma. Burn time: 5 hours.,"A decorative rose-shaped candle with a delicate rose fragrance, bringing a floral and elegant touch to your space.
+
+• Fragrance: Rose Petals
+• Burn Time: 5 Hours
+• Mold: Detailed 3D Rose Flower",1,50,1,299,,Scented Candles,"Rose, Flower, Decorative",,,,,,,,,,9,
+,simple,AUR-CND-11,Star Fish Scented Candle,1,1,visible,Artistic starfish candle with refreshing ocean fragrance. Burn time: 8 hours.,"An artistic starfish-shaped candle with a refreshing ocean fragrance, inspired by the beauty of the sea.
+
+• Fragrance: Sea Mist & Ocean
+• Burn Time: 8 Hours
+• Shape: Coastal Starfish
+• Hand-poured with natural wax",1,35,1,1199,,Scented Candles,"Starfish, Ocean, Sea, Decorative",,,,,,,,,,10,
+,variable,AUR-DIY-KIT,Aurika DIY Art Kit — Paint & Create for Kids,1,1,visible,"Screen-free hands-on painting kit for kids ages 3-12. Includes concrete toys, paints & brush.","Turn screen time into creative time! Our hands-on DIY painting kit allows children to paint their own concrete figurines and display their artwork with pride.
+
+• Recommended Age: 3 to 12 Years
+• What's Included:
+  - Concrete Figurines (Kitty, Unicorn, Airplane, Car, Rainbow & more)
+  - Child-Safe Acrylic Painting Colors
+  - High-Quality Detail Painting Brush
+• Child-Safe, Non-Toxic & Washable Materials",1,80,1,,,DIY Art Kits,"DIY, Kids, Painting, Toys, Creative, Screen-Free",Kit Size,"Small Kit (4 Toys + Paints + Brush), Large Kit (8 Toys + Paints + Brush)",1,1,,,,,,11,
+,variation,AUR-DIY-KIT-4,Aurika DIY Art Kit — Small Kit (4 Toys),1,0,visible,,"Includes 4 concrete toys, paints, and 1 painting brush (Ages 3-12).",1,40,1,299,,,,Kit Size,Small Kit (4 Toys + Paints + Brush),,1,,,,,AUR-DIY-KIT,1,
+,variation,AUR-DIY-KIT-8,Aurika DIY Art Kit — Large Kit (8 Toys),1,0,visible,,"Includes 8 concrete toys, vibrant paints, and painting brush (Ages 3-12).",1,40,1,599,,,,Kit Size,Large Kit (8 Toys + Paints + Brush),,1,,,,,AUR-DIY-KIT,2,

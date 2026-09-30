@@ -1,0 +1,25 @@
+# Build ZIP archives (these can be regenerated anytime via build_all_packages.py)
+aurika-v*.zip
+aurika-theme.zip
+aurika-theme-root.zip
+aurika-theme-installer-plugin.zip
+aurika-store.zip
+aurika-final.zip
+aurika-auto-products-importer-plugin.zip
+
+# OS & Editor generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.log

@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aurika Website Editing & Management Guide</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 16mm 14mm 16mm 14mm;
+    @bottom-right {
+      content: counter(page);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 8.5pt;
+      color: #888888;
+    }
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #222222;
+    background: #ffffff;
+    line-height: 1.5;
+    font-size: 9.5pt;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, .serif {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #111111;
+    margin-top: 0;
+  }
+
+  .cover-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 88vh;
+    padding: 50px 30px;
+    border: 2px solid #b8860b;
+    background: radial-gradient(circle at center, #faf8f5 0%, #f4eee3 100%);
+    position: relative;
+  }
+
+  .cover-logo-badge {
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+    line-height: 65px;
+    border-radius: 50%;
+    background: #111111;
+    color: #d4af37;
+    font-size: 28pt;
+    font-weight: bold;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  }
+
+  .cover-brand {
+    font-size: 30pt;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #111111;
+  }
+
+  .cover-tagline {
+    font-size: 13pt;
+    font-style: italic;
+    color: #b8860b;
+    margin-bottom: 35px;
+    letter-spacing: 1px;
+  }
+
+  .cover-divider {
+    width: 80px;
+    height: 2px;
+    background: #b8860b;
+    margin: 0 auto 30px;
+  }
+
+  .cover-title {
+    font-size: 22pt;
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .cover-subtitle {
+    font-size: 10.5pt;
+    color: #555555;
+    max-width: 520px;
+    margin-bottom: 45px;
+    line-height: 1.6;
+  }
+
+  .cover-meta {
+    margin-top: auto;
+    font-size: 9pt;
+    color: #666666;
+    border-top: 1px solid #e0d8cc;
+    padding-top: 18px;
+    width: 85%;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  .toc-container {
+    background: #faf8f5;
+    border: 1px solid #e8e0d5;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+
+  .toc-title {
+    font-size: 15pt;
+    color: #111111;
+    border-bottom: 2px solid #b8860b;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 20px;
+    font-size: 9pt;
+  }
+
+  .toc-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 2px;
+  }
+
+  .toc-num {
+    font-weight: bold;
+    color: #b8860b;
+    margin-right: 5px;
+  }
+
+  h2.section-heading {
+    font-size: 14pt;
+    color: #111111;
+    border-bottom: 1.5px solid #b8860b;
+    padding-bottom: 5px;
+    margin-top: 22px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  h2.section-heading .badge-num {
+    background: #111111;
+    color: #ffffff;
+    font-size: 9pt;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-right: 8px;
+    font-family: -apple-system, sans-serif;
+    font-weight: normal;
+  }
+
+  h3 {
+    font-size: 11pt;
+    color: #333333;
+    margin-top: 14px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin: 0 0 8px;
+  }
+
+  .path-box {
+    background: #111111;
+    color: #ffffff;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 9pt;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .path-box span.gold {
+    color: #d4af37;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 16px;
+    font-size: 8.5pt;
+  }
+
+  th, td {
+    border: 1px solid #e5dfd5;
+    padding: 6px 9px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f7f4ef;
+    color: #111111;
+    font-weight: 600;
+  }
+
+  tr:nth-child(even) td {
+    background: #fdfcfb;
+  }
+
+  .step-list {
+    margin: 6px 0 12px;
+    padding-left: 18px;
+  }
+
+  .step-list li {
+    margin-bottom: 5px;
+  }
+
+  .tip-box {
+    background: #fdfbf7;
+    border-left: 4px solid #b8860b;
+    padding: 9px 12px;
+    margin: 10px 0;
+    border-radius: 0 5px 5px 0;
+    font-size: 8.5pt;
+  }
+
+  .tip-box strong {
+    color: #b8860b;
+  }
+
+  .important-box {
+    background: #fcf6f6;
+    border-left: 4px solid #d9534f;
+    padding: 9px 12px;
+    margin: 10px 0;
+    border-radius: 0 5px 5px 0;
+    font-size: 8.5pt;
+  }
+
+  .important-box strong {
+    color: #d9534f;
+  }
+
+  code {
+    background: #f2ede6;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-family: Consolas, monospace;
+    font-size: 8pt;
+    color: #b8860b;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover-page">
+  <div class="cover-logo-badge">A</div>
+  <div class="cover-brand">AURIKA</div>
+  <div class="cover-tagline">Where Art Meets Elegance</div>
+  <div class="cover-divider"></div>
+  <h1 class="cover-title">Client Website Editing &amp; Store Management Manual</h1>
+  <p class="cover-subtitle">The complete, non-technical handbook for updating every section, adding scented candles &amp; DIY art kits, managing customer orders, and setting discounts across the Aurika official online store.</p>
+  
+  <div class="cover-meta">
+    <p><strong>Website:</strong> aurika.online &nbsp;|&nbsp; <strong>Theme:</strong> Aurika Luxury Edition (v6.14.0)</p>
+    <p><strong>Prepared For:</strong> Aurika Store Owner &amp; Marketing Team &nbsp;|&nbsp; <strong>Date:</strong> 2026</p>
+  </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="page-break"></div>
+
+<div class="toc-container">
+  <h2 class="toc-title">Table of Contents</h2>
+  <div class="toc-grid">
+    <div class="toc-item"><span><span class="toc-num">1.</span> Accessing WordPress Admin</span><span>Page 2</span></div>
+    <div class="toc-item"><span><span class="toc-num">2.</span> Theme Customizer Overview</span><span>Page 2</span></div>
+    <div class="toc-item"><span><span class="toc-num">3.</span> Announcement / Marquee Bar</span><span>Page 3</span></div>
+    <div class="toc-item"><span><span class="toc-num">4.</span> Hero Slider &amp; Banners</span><span>Page 3</span></div>
+    <div class="toc-item"><span><span class="toc-num">5.</span> Homepage Sections (Trending &amp; Categories)</span><span>Page 4</span></div>
+    <div class="toc-item"><span><span class="toc-num">6.</span> DIY Art Kit Showcase Section</span><span>Page 4</span></div>
+    <div class="toc-item"><span><span class="toc-num">7.</span> Promotional Offer Banner</span><span>Page 5</span></div>
+    <div class="toc-item"><span><span class="toc-num">8.</span> Customer Reviews (Testimonials 1–6)</span><span>Page 5</span></div>
+    <div class="toc-item"><span><span class="toc-num">9.</span> Global Trust &amp; Guarantee Badges</span><span>Page 6</span></div>
+    <div class="toc-item"><span><span class="toc-num">10.</span> Store Contact Info &amp; Social Links</span><span>Page 6</span></div>
+    <div class="toc-item"><span><span class="toc-num">11.</span> Footer Columns, Newsletter &amp; Notes</span><span>Page 7</span></div>
+    <div class="toc-item"><span><span class="toc-num">12.</span> Product Page Defaults &amp; Accordions</span><span>Page 7</span></div>
+    <div class="toc-item"><span><span class="toc-num">13.</span> Pricing, Bundle Discounts &amp; Shipping Rules</span><span>Page 8</span></div>
+    <div class="toc-item"><span><span class="toc-num">14.</span> Shop &amp; Archive Pages</span><span>Page 8</span></div>
+    <div class="toc-item"><span><span class="toc-num">15.</span> Navigation Menus &amp; Custom Menu Toggle</span><span>Page 9</span></div>
+    <div class="toc-item"><span><span class="toc-num">16.</span> Policy &amp; Legal Pages</span><span>Page 9</span></div>
+    <div class="toc-item"><span><span class="toc-num">17.</span> Adding Scented Candles (1-Pack, 2-Pack, 3-Pack)</span><span>Page 10</span></div>
+    <div class="toc-item"><span><span class="toc-num">18.</span> Adding DIY Art Kits (Small &amp; Big Kit Selectors)</span><span>Page 10</span></div>
+    <div class="toc-item"><span><span class="toc-num">19.</span> Managing Orders &amp; Cash on Delivery (COD)</span><span>Page 11</span></div>
+    <div class="toc-item"><span><span class="toc-num">20.</span> Customer Reviews Approval &amp; Cache Purging</span><span>Page 11</span></div>
+  </div>
+</div>
+
+<h2 class="section-heading"><span class="badge-num">01</span> Accessing WordPress Admin</h2>
+<p>To manage your store, log in to your store's administration dashboard:</p>
+<div class="path-box">
+  <span>URL:</span> <span class="gold">https://aurika.online/wp-admin</span>
+</div>
+<ol class="step-list">
+  <li>Enter your <strong>Username / Email Address</strong> and <strong>Password</strong>.</li>
+  <li>Click <strong>Log In</strong> to reach the main WordPress Dashboard.</li>
+  <li>On the left-side vertical black menu bar, you will find all management sections (Appearance, Products, WooCommerce, Pages, Orders).</li>
+</ol>
+
+<h2 class="section-heading"><span class="badge-num">02</span> The Theme Customizer: Your Primary Control Panel</h2>
+<p>Virtually all text, images, titles, headings, reviews, and store rules can be modified with a live visual preview in the <strong>Customizer</strong>:</p>
+<div class="path-box">
+  <span>Location:</span> WP Admin &rarr; <span class="gold">Appearance &rarr; Customize &rarr; Aurika Theme Settings</span>
+</div>
+<p>When you open the Customizer, a preview of your website appears on the right, and the settings panel is on the left. Any change you type immediately updates the preview on the right in real time!</p>
+<div class="tip-box">
+  <strong>Golden Rule:</strong> After making edits in the Customizer, always click the blue <strong>"Publish"</strong> button at the very top of the left sidebar to save your changes to the live site.
+</div>
+
+<!-- PAGE 3 -->
+<div class="page-break"></div>
+
+<h2 class="section-heading"><span class="badge-num">03</span> Announcement &amp; Marquee Ticker Bar</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">📢 Announcement &amp; Marquee Bar</span>
+</div>
+<p>The top scrolling ticker bar runs continuously across both desktop and mobile screens.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:30%;">Setting Name</th>
+      <th style="width:30%;">What It Controls</th>
+      <th style="width:40%;">Example / Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Show Announcement Bar</strong></td>
+      <td>Turn the top marquee strip ON or OFF completely.</td>
+      <td>Checkbox (Checked = Active)</td>
+    </tr>
+    <tr>
+      <td><strong>Marquee / Ticker Text</strong></td>
+      <td>The scrolling text content. Separate items with bullets (&bull;) or dashes.</td>
+      <td><code>HAND-POURED SCENTED CANDLES &bull; FREE SHIPPING ABOVE RS. 5,000 &bull; CASH ON DELIVERY</code></td>
+    </tr>
+    <tr>
+      <td><strong>Search Placeholder</strong></td>
+      <td>The watermark prompt text shown inside the search pop-up.</td>
+      <td><code>Search candles, art kits...</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 class="section-heading"><span class="badge-num">04</span> Hero Slider &amp; Banners (Homepage Top)</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">🖼️ Hero Slider &amp; Banners</span>
+</div>
+<p>The homepage features an automated, full-bleed luxury image carousel with smooth slide transitions and a prominent Call to Action (CTA) button.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:30%;">Setting Name</th>
+      <th style="width:35%;">What It Controls</th>
+      <th style="width:35%;">Recommended Size / Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Slide 1 Background Image</strong></td>
+      <td>The primary first image shown on homepage load.</td>
+      <td>High-res JPG (1920 &times; 800px or similar).</td>
+    </tr>
+    <tr>
+      <td><strong>Slide 2 Background Image</strong></td>
+      <td>The second slide that auto-transitions after 5s.</td>
+      <td>High-res JPG (1920 &times; 800px).</td>
+    </tr>
+    <tr>
+      <td><strong>Hero Button Text</strong></td>
+      <td>The text written inside the white oval CTA button.</td>
+      <td><code>SHOP NOW</code> or <code>EXPLORE COLLECTION</code></td>
+    </tr>
+    <tr>
+      <td><strong>Hero Button Link</strong></td>
+      <td>Where the button sends users when clicked.</td>
+      <td><code>/shop</code> or <code>/product-category/scented-candles</code></td>
+    </tr>
+  </tbody>
+</table>
+<div class="tip-box">
+  <strong>Image Upload Tip:</strong> To change a slide image, click <em>"Change Image"</em>, upload your new photo from your phone or laptop, and select it. The dark luxury overlay is applied automatically by the theme for text readability!
+</div>
+
+<!-- PAGE 4 -->
+<div class="page-break"></div>
+
+<h2 class="section-heading"><span class="badge-num">05</span> Homepage Sections (Trending &amp; Categories)</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">🏠 Homepage Sections</span>
+</div>
+<p>Control the titles, item quantities, and category displays on your homepage.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:30%;">Setting Name</th>
+      <th style="width:45%;">Functionality</th>
+      <th style="width:25%;">Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Trending Section Title</strong></td>
+      <td>Main heading above the top-selling products grid.</td>
+      <td><code>TRENDING NOW</code></td>
+    </tr>
+    <tr>
+      <td><strong>Trending Section Subtitle</strong></td>
+      <td>Italic subtitle below the heading.</td>
+      <td><code>Our Most-Loved Creations</code></td>
+    </tr>
+    <tr>
+      <td><strong>Trending Product Count</strong></td>
+      <td>How many products to show in the trending grid (e.g. 4, 8, 12).</td>
+      <td><code>8</code></td>
+    </tr>
+    <tr>
+      <td><strong>View All Button Text</strong></td>
+      <td>Text on the outline button below the trending grid.</td>
+      <td><code>View All Products &rarr;</code></td>
+    </tr>
+    <tr>
+      <td><strong>Category Section Title</strong></td>
+      <td>Main heading above category cards.</td>
+      <td><code>SHOP BY CATEGORY</code></td>
+    </tr>
+    <tr>
+      <td><strong>Category Section Subtitle</strong></td>
+      <td>Italic subtitle below the category heading.</td>
+      <td><code>Explore Our Collections</code></td>
+    </tr>
+  </tbody>
+</table>
+<div class="tip-box">
+  <strong>Dynamic Categories:</strong> The "Shop by Category" section automatically displays all categories created under <strong>Products &rarr; Categories</strong> that contain active products. To add a new category card on the homepage, simply add a category in WooCommerce and set its Thumbnail Image!
+</div>
+
+<h2 class="section-heading"><span class="badge-num">06</span> DIY Art Kit Showcase Section</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">🎨 DIY Art Kit Showcase</span>
+</div>
+<p>The dedicated split-screen spotlight section for Aurika's screen-free children's art kits.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:30%;">Setting Name</th>
+      <th style="width:70%;">Description &amp; Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Eyebrow</strong></td>
+      <td>Gold small caps category tag (e.g. <code>FOR CHILDREN AGES 3–12</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>Main Title</strong></td>
+      <td>Large heading (e.g. <code>Spark Creativity. Beyond the Screen.</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>Description Paragraph</strong></td>
+      <td>Descriptive story text detailing the concrete toys, paints, and brush.</td>
+    </tr>
+    <tr>
+      <td><strong>Custom DIY Image</strong></td>
+      <td>Upload a photo of children painting or of the DIY kit unboxing.</td>
+    </tr>
+    <tr>
+      <td><strong>Button Text &amp; Link</strong></td>
+      <td>Button label (e.g. <code>EXPLORE DIY KITS &rarr;</code>) and destination link.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- PAGE 5 -->
+<div class="page-break"></div>
+
+<h2 class="section-heading"><span class="badge-num">07</span> Promotional / Launch Offer Banner</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">🎉 Promotional / Offer Banner</span>
+</div>
+<p>The full-width callout banner positioned above the footer across the homepage.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:30%;">Setting Name</th>
+      <th style="width:45%;">What It Controls</th>
+      <th style="width:25%;">Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Banner Tag Badge</strong></td>
+      <td>Gold pill label at top of the offer banner.</td>
+      <td><code>LAUNCH PROMOTION</code></td>
+    </tr>
+    <tr>
+      <td><strong>Banner Heading</strong></td>
+      <td>Large headline for special sales or shipping announcements.</td>
+      <td><code>Free Shipping on Orders Above Rs. 5,000</code></td>
+    </tr>
+    <tr>
+      <td><strong>Banner Subtitle</strong></td>
+      <td>Detailed terms or promo description.</td>
+      <td><code>Rs. 350 flat rate delivery across Pakistan...</code></td>
+    </tr>
+    <tr>
+      <td><strong>Button Text &amp; Link</strong></td>
+      <td>Call to action button and link.</td>
+      <td><code>SHOP NOW &rarr;</code> &rarr; <code>/shop</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 class="section-heading"><span class="badge-num">08</span> Customer Testimonials (Happy Customers)</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">💬 Testimonials (Happy Customers)</span>
+</div>
+<p>You can edit <strong>all 6 customer testimonials</strong> displayed in the interactive customer review carousel.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:25%;">Review Item</th>
+      <th style="width:45%;">Editable Fields</th>
+      <th style="width:30%;">Current Defaults</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Section Headers</strong></td>
+      <td>Section Eyebrow &amp; Section Title</td>
+      <td><code>TESTIMONIALS</code> / <code>HAPPY CUSTOMERS</code></td>
+    </tr>
+    <tr>
+      <td><strong>Review 1</strong></td>
+      <td>Quote, Customer Author, Purchased Product</td>
+      <td>Ayesha Khan (Lavender Candle)</td>
+    </tr>
+    <tr>
+      <td><strong>Review 2</strong></td>
+      <td>Quote, Customer Author, Purchased Product</td>
+      <td>Sara Malik (Sea Shell Candle)</td>
+    </tr>
+    <tr>
+      <td><strong>Review 3</strong></td>
+      <td>Quote, Customer Author, Purchased Product</td>
+      <td>Fatima Riaz (DIY Art Kit)</td>
+    </tr>
+    <tr>
+      <td><strong>Review 4</strong></td>
+      <td>Quote, Customer Author, Purchased Product</td>
+      <td>Zainab Ali (Peony Flower Candle)</td>
+    </tr>
+    <tr>
+      <td><strong>Review 5</strong></td>
+      <td>Quote, Customer Author, Purchased Product</td>
+      <td>Bilal Sheikh (Rose Heart 3-Pack)</td>
+    </tr>
+    <tr>
+      <td><strong>Review 6</strong></td>
+      <td>Quote, Customer Author, Purchased Product</td>
+      <td>Hina Tariq (Daisy Flower Candle)</td>
+    </tr>
+  </tbody>
+</table>
+<div class="tip-box">
+  <strong>Adding Real Customer Feedback:</strong> When you receive positive WhatsApp messages or Instagram reviews, copy the customer's quote and name into one of these fields to update social proof instantly!
+</div>
+
+<!-- PAGE 6 -->
+<div class="page-break"></div>
+
+<h2 class="section-heading"><span class="badge-num">09</span> Global Trust &amp; Guarantee Badges</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">🛡️ Trust &amp; Guarantee Strip</span>
+</div>
+<p>The 4 value proposition badges displayed on both the Homepage and the global Footer.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:20%;">Badge</th>
+      <th style="width:40%;">Title Field</th>
+      <th style="width:40%;">Subtitle / Description Field</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Badge 1</strong></td>
+      <td><code>aurika_trust1_title</code> (Free Shipping)</td>
+      <td><code>aurika_trust1_desc</code> (Rs. 350 flat under Rs. 5,000)</td>
+    </tr>
+    <tr>
+      <td><strong>Badge 2</strong></td>
+      <td><code>aurika_trust2_title</code> (Cash on Delivery)</td>
+      <td><code>aurika_trust2_desc</code> (Available across Pakistan)</td>
+    </tr>
+    <tr>
+      <td><strong>Badge 3</strong></td>
+      <td><code>aurika_trust3_title</code> (100% Handcrafted)</td>
+      <td><code>aurika_trust3_desc</code> (Natural wax &amp; lead-free wicks)</td>
+    </tr>
+    <tr>
+      <td><strong>Badge 4</strong></td>
+      <td><code>aurika_trust4_title</code> (Safe &amp; Verified)</td>
+      <td><code>aurika_trust4_desc</code> (Damage replacement guarantee)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 class="section-heading"><span class="badge-num">10</span> Store Contact Information &amp; Social Links</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">📞 Contact Info &amp; Social Links</span>
+</div>
+<p>Updating these fields synchronizes your contact numbers, emails, and social icons site-wide automatically.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:30%;">Field Name</th>
+      <th style="width:40%;">Where It Appears</th>
+      <th style="width:30%;">Default Setting</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>WhatsApp Number</strong></td>
+      <td>Header, Footer, Contact Page, Returns Policy</td>
+      <td><code>+92 321 1632101</code></td>
+    </tr>
+    <tr>
+      <td><strong>Official Contact Email</strong></td>
+      <td>Footer, Contact Page, Inquiries Recipient</td>
+      <td><code>aurikaofficial25@gmail.com</code></td>
+    </tr>
+    <tr>
+      <td><strong>Phone Number</strong></td>
+      <td>Contact Us Page &amp; Customer Support</td>
+      <td><code>+92 321 1632101</code></td>
+    </tr>
+    <tr>
+      <td><strong>Studio / Office Location</strong></td>
+      <td>Contact page address block</td>
+      <td><code>Jamshoro / Karachi, Pakistan</code></td>
+    </tr>
+    <tr>
+      <td><strong>Instagram URL</strong></td>
+      <td>Header &amp; Footer social icon links</td>
+      <td><code>https://instagram.com/aurikaofficial</code></td>
+    </tr>
+    <tr>
+      <td><strong>Facebook URL</strong></td>
+      <td>Header &amp; Footer social icon links</td>
+      <td><code>https://facebook.com/aurikaofficial</code></td>
+    </tr>
+    <tr>
+      <td><strong>TikTok URL</strong></td>
+      <td>Header &amp; Footer social icon links</td>
+      <td><code>https://tiktok.com/@aurikaofficial</code></td>
+    </tr>
+  </tbody>
+</table>
+<div class="important-box">
+  <strong>Contact Form Routing:</strong> Any inquiry submitted through the Contact Us form is automatically sent to the <strong>Official Contact Email</strong> specified here.
+</div>
+
+<!-- PAGE 7 -->
+<div class="page-break"></div>
+
+<h2 class="section-heading"><span class="badge-num">11</span> Footer Columns, Newsletter &amp; Notes</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">📄 Footer Settings</span>
+</div>
+<p>Manage all 5 footer column titles and explanatory text:</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:30%;">Setting Name</th>
+      <th style="width:45%;">Purpose</th>
+      <th style="width:25%;">Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Column 1–5 Headings</strong></td>
+      <td>The titles of all 5 footer columns.</td>
+      <td>Get in Touch, Quick Links, Information, Customer Service, Newsletter</td>
+    </tr>
+    <tr>
+      <td><strong>Brand Description</strong></td>
+      <td>Brief luxury paragraph below logo in Column 1.</td>
+      <td>"We create candles that bring warmth..."</td>
+    </tr>
+    <tr>
+      <td><strong>Shipping Notes 1, 2, 3</strong></td>
+      <td>Quick policy bullets under Customer Service.</td>
+      <td>COD Nationwide, Free above 5k, Rs. 350 flat</td>
+    </tr>
+    <tr>
+      <td><strong>Newsletter Desc &amp; Button</strong></td>
+      <td>Text above and inside the newsletter signup box.</td>
+      <td>"Receive our latest updates..." / Subscribe</td>
+    </tr>
+    <tr>
+      <td><strong>Copyright Text</strong></td>
+      <td>Bottom copyright bar statement.</td>
+      <td><code>Copyright &copy; 2026 Aurika...</code></td>
+    </tr>
+    <tr>
+      <td><strong>Incubation Badge Text</strong></td>
+      <td>Academic / University incubation partner credit.</td>
+      <td><code>Incubated at BIC MUET Jamshoro</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 class="section-heading"><span class="badge-num">12</span> Single Product Page Defaults &amp; Accordions</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">📦 Product Page Defaults</span>
+</div>
+<p>Control the default specifications, disclaimer, care instructions, and stock messages that appear across all product pages:</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:30%;">Field Name</th>
+      <th style="width:45%;">What It Displays</th>
+      <th style="width:25%;">Format</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Product Tagline Fallback</strong></td>
+      <td>Subtitle shown under title if short description is blank.</td>
+      <td>Text</td>
+    </tr>
+    <tr>
+      <td><strong>Stock Status Text</strong></td>
+      <td>The green-dot stock message next to price.</td>
+      <td><code>In Stock &mdash; Handcrafted in Pakistan</code></td>
+    </tr>
+    <tr>
+      <td><strong>Product Details Accordion</strong></td>
+      <td>Content of the "Product Details" dropdown.</td>
+      <td>HTML List allowed (Craftsmanship, Burn Time, Wax, Wick, Safety)</td>
+    </tr>
+    <tr>
+      <td><strong>Disclaimer Accordion</strong></td>
+      <td>Handmade artisanal variation notice.</td>
+      <td>Text paragraph</td>
+    </tr>
+    <tr>
+      <td><strong>How to Use Accordion</strong></td>
+      <td>Burning and candle care guidelines (trimming wick, burn duration).</td>
+      <td>HTML List allowed</td>
+    </tr>
+    <tr>
+      <td><strong>Shipping &amp; Exchange Accordion</strong></td>
+      <td>Exchange timeline, flat rate, and COD details.</td>
+      <td>HTML List allowed</td>
+    </tr>
+    <tr>
+      <td><strong>Related Products Heading</strong></td>
+      <td>Heading for "You May Also Like" recommendations.</td>
+      <td>Text</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- PAGE 8 -->
+<div class="page-break"></div>
+
+<h2 class="section-heading"><span class="badge-num">13</span> Store Pricing, Bundle Discounts &amp; Shipping Rules</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">💰 Pricing &amp; Shipping Rules</span>
+</div>
+<p>Change your store's promotional discount math, DIY kit tiers, and shipping thresholds without touching PHP code:</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:35%;">Setting Name</th>
+      <th style="width:45%;">How It Affects the Store</th>
+      <th style="width:20%;">Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Pack of 2 Discount %</strong></td>
+      <td>Discount applied automatically when a customer picks the 2-pack card on candles.</td>
+      <td><code>10</code> (10% Off)</td>
+    </tr>
+    <tr>
+      <td><strong>Pack of 3 Discount %</strong></td>
+      <td>Discount applied automatically when customer picks the 3-pack card on candles.</td>
+      <td><code>15</code> (15% Off)</td>
+    </tr>
+    <tr>
+      <td><strong>DIY Small Kit Price (Rs.)</strong></td>
+      <td>Price for Small Kit (4 Toys) on the DIY Art Kit product page &amp; cart.</td>
+      <td><code>299</code></td>
+    </tr>
+    <tr>
+      <td><strong>DIY Big Kit Price (Rs.)</strong></td>
+      <td>Price for Big Kit (8 Toys) on the DIY Art Kit product page &amp; cart.</td>
+      <td><code>599</code></td>
+    </tr>
+    <tr>
+      <td><strong>Free Shipping Threshold (Rs.)</strong></td>
+      <td>Orders equal or higher than this qualify for automatic Free Delivery.</td>
+      <td><code>5000</code></td>
+    </tr>
+    <tr>
+      <td><strong>Flat Rate Shipping Fee (Rs.)</strong></td>
+      <td>Delivery charge applied to orders below the free shipping threshold.</td>
+      <td><code>350</code></td>
+    </tr>
+  </tbody>
+</table>
+<div class="tip-box">
+  <strong>Instant Store-wide Synchronization:</strong> Changing the shipping fee to <code>300</code> or threshold to <code>4000</code> here will automatically update the cart math, checkout calculations, footer notes, and policy page perk cards simultaneously!
+</div>
+
+<h2 class="section-heading"><span class="badge-num">14</span> Shop &amp; Archive Pages</h2>
+<div class="path-box">
+  <span>Location:</span> Appearance &rarr; Customize &rarr; Aurika Theme Settings &rarr; <span class="gold">🛒 Shop &amp; Archive Page</span>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th style="width:30%;">Setting Name</th>
+      <th style="width:45%;">Purpose</th>
+      <th style="width:25%;">Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Shop Page Title</strong></td>
+      <td>Main heading at top of the <code>/shop</code> catalog page.</td>
+      <td><code>The Aurika Collection</code></td>
+    </tr>
+    <tr>
+      <td><strong>Shop Page Subtitle</strong></td>
+      <td>Subtitle shown below the shop heading.</td>
+      <td><code>Hand-poured Scented Candles &amp; DIY Art Kits</code></td>
+    </tr>
+    <tr>
+      <td><strong>Hero Eyebrow</strong></td>
+      <td>Small gold badge text above the shop page title.</td>
+      <td><code>WHERE ART MEETS ELEGANCE</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- PAGE 9 -->
+<div class="page-break"></div>
+
+<h2 class="section-heading"><span class="badge-num">15</span> Navigation Menus &amp; Custom Menu Toggle</h2>
+<div class="path-box">
+  <span>Location:</span> WP Admin &rarr; <span class="gold">Appearance &rarr; Menus</span> &amp; <span class="gold">Appearance &rarr; Customize</span>
+</div>
+<p>By default, the theme displays the signature 6-link luxury navigation bar (<strong>Home, Shop, Scented Candles, DIY Art Kits, About Us, Contact Us</strong>) with uppercase gold-accent styling.</p>
+<ol class="step-list">
+  <li>If you want to use a custom menu: Go to <strong>Appearance &rarr; Menus</strong>.</li>
+  <li>Create or select your menu, add your desired pages or custom links, and save.</li>
+  <li>Assign the menu to <strong>"Primary Navigation (Header)"</strong> and/or <strong>"Mobile Menu (Overlay)"</strong>.</li>
+  <li>Go to <strong>Appearance &rarr; Customize &rarr; 📢 Announcement &amp; Marquee Bar</strong>.</li>
+  <li>Check the box <strong>"Enable Custom Menu from WP Menus"</strong> and click <strong>Publish</strong>.</li>
+</ol>
+
+<h2 class="section-heading"><span class="badge-num">16</span> Editing Legal &amp; Policy Pages</h2>
+<div class="path-box">
+  <span>Location:</span> WP Admin &rarr; <span class="gold">Pages &rarr; All Pages</span>
+</div>
+<p>Every policy page on Aurika can now be customized directly using the WordPress block/text editor:</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:25%;">Page Title</th>
+      <th style="width:25%;">URL Slug</th>
+      <th style="width:50%;">How It Works</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Privacy Policy</strong></td>
+      <td><code>/privacy-policy</code></td>
+      <td>Click <em>Edit</em> on Privacy Policy. Type or paste your own custom policy clauses. If left blank, it automatically shows the complete 18-section legal template.</td>
+    </tr>
+    <tr>
+      <td><strong>Shipping Policy</strong></td>
+      <td><code>/shipping-policy</code></td>
+      <td>Edit in Pages editor. Shows dynamic 3-card perk grid with current shipping rates from Customizer.</td>
+    </tr>
+    <tr>
+      <td><strong>Returns Policy</strong></td>
+      <td><code>/returns-policy</code></td>
+      <td>Edit in Pages editor. Falls back to damage replacement guidelines with your current WhatsApp number.</td>
+    </tr>
+    <tr>
+      <td><strong>Terms &amp; Conditions</strong></td>
+      <td><code>/terms-conditions</code></td>
+      <td>Edit in Pages editor. Falls back to full 12-clause store terms.</td>
+    </tr>
+    <tr>
+      <td><strong>About Us</strong></td>
+      <td><code>/about</code></td>
+      <td>Edit in Pages editor. Hero text and bottom CTA can also be customized via Customizer under <em>Page Hero &amp; Defaults</em>.</td>
+    </tr>
+    <tr>
+      <td><strong>Contact Us</strong></td>
+      <td><code>/contact</code></td>
+      <td>Edit in Pages editor. You can add Google Map embeds, studio photos, or custom intro text above the form.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- PAGE 10 -->
+<div class="page-break"></div>
+
+<h2 class="section-heading"><span class="badge-num">17</span> Step-by-Step: Adding Scented Candles</h2>
+<div class="path-box">
+  <span>Location:</span> WP Admin &rarr; <span class="gold">Products &rarr; Add New</span>
+</div>
+<p>Adding a luxury scented candle takes less than 2 minutes. The theme automatically configures the <strong>1-Pack, 2-Pack (10% Off), and 3-Pack (15% Off)</strong> interactive cards for customers!</p>
+
+<ol class="step-list">
+  <li><strong>Product Name:</strong> Enter the candle's name (e.g. <em>Amber &amp; Vanilla Scented Candle</em>).</li>
+  <li><strong>Main Description Box:</strong> Write the sensory description and fragrance notes:
+    <ul>
+      <li><em>Top Notes:</em> Bergamot, Warm Amber.</li>
+      <li><em>Heart Notes:</em> French Vanilla, Tonka Bean.</li>
+      <li><em>Base Notes:</em> Sandalwood, White Musk.</li>
+    </ul>
+    <em>Note: This text automatically populates the first <strong>"About The Fragrance"</strong> accordion on the product page!</em>
+  </li>
+  <li><strong>Product Short Description:</strong> Enter a 1-line luxury teaser (e.g. <em>Handcrafted organic soy candle with soothing vanilla notes</em>). This displays as the subtitle under the main price.</li>
+  <li><strong>Product Data Box:</strong>
+    <ul>
+      <li>Product Type: Keep as <strong>"Simple product"</strong>.</li>
+      <li><strong>Regular Price (Rs.):</strong> Enter single candle price (e.g. <code>1299</code>). The theme's bundle math automatically calculates:
+        <br>&bull; 1-Pack = Rs. 1,299
+        <br>&bull; 2-Pack = Rs. 2,338 (10% Off)
+        <br>&bull; 3-Pack = Rs. 3,312 (15% Off)
+      </li>
+    </ul>
+  </li>
+  <li><strong>Product Image (Right Column):</strong> Click <em>"Set product image"</em> to upload your primary aesthetic photo (minimum 1000 &times; 1000px square).</li>
+  <li><strong>Product Gallery:</strong> Upload 2&ndash;4 photos (close-up of wax, lifestyle in room, packaging unboxing).</li>
+  <li><strong>Product Categories (Right Column):</strong> Check <strong>"Scented Candles"</strong>.</li>
+  <li>Click the blue <strong>"Publish"</strong> button. Your candle is live with pack discounts and sticky add-to-cart!</li>
+</ol>
+
+<h2 class="section-heading"><span class="badge-num">18</span> Step-by-Step: Adding DIY Art Kits</h2>
+<div class="path-box">
+  <span>Location:</span> WP Admin &rarr; <span class="gold">Products &rarr; Add New</span>
+</div>
+<p>DIY Art Kits feature a custom <strong>Small Kit (4 Toys) vs. Big Kit (8 Toys)</strong> selector with paints &amp; brush badges:</p>
+<ol class="step-list">
+  <li><strong>Product Name:</strong> Must include the word <strong>"DIY"</strong> or <strong>"Art Kit"</strong> in the title (e.g. <em>Safari Animals DIY Art Kit</em>).</li>
+  <li><strong>Main Description:</strong> List the figures included (e.g. <em>Lion, Elephant, Giraffe, Zebra</em>), paint pots, brush, and non-toxic certificate.</li>
+  <li><strong>Product Data:</strong> Set Regular Price to <code>299</code> (or your base kit price). The theme's DIY selector will automatically display:
+    <br>&bull; <strong>Small Kit (4 Toys):</strong> Rs. 299
+    <br>&bull; <strong>Big Kit (8 Toys):</strong> Rs. 599 (Best Value Badge)
+    <br><em>(Both prices can be changed anytime in Appearance &rarr; Customize &rarr; 💰 Pricing &amp; Shipping Rules).</em>
+  </li>
+  <li><strong>Category:</strong> Check <strong>"DIY Art Kits"</strong>.</li>
+  <li><strong>Product Image:</strong> Upload a colorful photo showing the concrete toys, paints, and brush together.</li>
+  <li>Click <strong>Publish</strong>.</li>
+</ol>
+
+<!-- PAGE 11 -->
+<div class="page-break"></div>
+
+<h2 class="section-heading"><span class="badge-num">19</span> Managing Customer Orders &amp; Cash on Delivery (COD)</h2>
+<div class="path-box">
+  <span>Location:</span> WP Admin &rarr; <span class="gold">WooCommerce &rarr; Orders</span>
+</div>
+<p>When a customer completes checkout on Aurika, their order instantly appears under <strong>WooCommerce &rarr; Orders</strong>.</p>
+<ol class="step-list">
+  <li><strong>Review New Orders:</strong> New orders have status <strong>"Processing"</strong> (for prepaid) or <strong>"On Hold" / "Processing"</strong> (for Cash on Delivery).</li>
+  <li><strong>View Customer Details:</strong> Click the customer's name or Order ID to view:
+    <ul>
+      <li>Customer Phone Number (for WhatsApp confirmation).</li>
+      <li>Full Delivery Address &amp; City.</li>
+      <li>Selected Pack Size (e.g. <em>2 Pack</em> or <em>Big Kit &ndash; 8 Concrete Toys</em>).</li>
+      <li>Total Amount + Shipping Fee (Free if &ge; Rs. 5,000, or Rs. 350 flat).</li>
+    </ul>
+  </li>
+  <li><strong>WhatsApp Order Confirmation:</strong> Before dispatching COD parcels, send a quick confirmation WhatsApp message to the customer to ensure address accuracy and prevent courier return fees.</li>
+  <li><strong>Update Order Status:</strong>
+    <ul>
+      <li>When parcel is handed to the courier (Trax, Leopard, PostEx, TCS), change status to <strong>"Completed"</strong>.</li>
+      <li>An automated dispatch email is sent to the customer automatically!</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 class="section-heading"><span class="badge-num">20</span> Approving Reviews &amp; LiteSpeed Cache Purging</h2>
+<div class="path-box">
+  <span>Location:</span> WP Admin &rarr; <span class="gold">Products &rarr; Reviews</span> &amp; <span class="gold">LiteSpeed Cache Toolbar</span>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th style="width:30%;">Task</th>
+      <th style="width:70%;">Instructions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Customer Reviews Approval</strong></td>
+      <td>When customers submit a review on a product page, it awaits moderation in <strong>Products &rarr; Reviews</strong>. Hover over the review and click <strong>"Approve"</strong>. The 5-star rating and comment will appear publicly immediately!</td>
+    </tr>
+    <tr>
+      <td><strong>Purging LiteSpeed Cache</strong></td>
+      <td>If you change a price, picture, or banner in the Customizer and it doesn't show right away on your phone or incognito tab, LiteSpeed is serving the cached HTML. In the top black admin bar, hover over the green LiteSpeed diamond icon and click <strong>"Purge All"</strong>. Then hard-refresh your browser (<code>Ctrl + F5</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>Inventory Low-Stock Alerts</strong></td>
+      <td>Set email alerts for low inventory under <strong>WooCommerce &rarr; Settings &rarr; Products &rarr; Inventory</strong> so you never run out of raw natural wax or kit supplies during sales.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div style="margin-top: 35px; text-align: center; border-top: 1px solid #e0d8cc; padding-top: 20px; font-size: 8.5pt; color: #888;">
+  <p><strong>Aurika &mdash; Where Art Meets Elegance</strong><br>Official Store Management Guide (v6.14.0) &bull; aurika.online &bull; Prepared by Development Team</p>
+</div>
+
+</body>
+</html>
