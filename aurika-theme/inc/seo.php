@@ -208,8 +208,25 @@ function aurika_seo_schema_jsonld() {
 		),
 	);
 
+	// Developer Schema (Mohammad Farooque — Computer Science Graduate & Web App Developer)
+	$dev_schema = array(
+		'@context'    => 'https://schema.org',
+		'@type'       => 'Person',
+		'name'        => 'Mohammad Farooque',
+		'jobTitle'    => 'Web Application Developer',
+		'description' => 'Computer Science Graduate & Web Application Developer',
+		'url'         => 'https://www.linkedin.com/in/mohammadfarooque/',
+		'sameAs'      => array( 'https://www.linkedin.com/in/mohammadfarooque/' ),
+		'alumniOf'    => array(
+			'@type' => 'EducationalOrganization',
+			'name'  => 'Computer Science Graduate',
+		),
+		'knowsAbout'  => array( 'Web Application Development', 'WordPress', 'WooCommerce', 'PHP', 'Full Stack Development' ),
+	);
+
 	echo "\n" . '<script type="application/ld+json">' . "\n" . wp_json_encode( $org_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "\n" . '</script>' . "\n";
 	echo '<script type="application/ld+json">' . "\n" . wp_json_encode( $website_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "\n" . '</script>' . "\n";
+	echo '<script type="application/ld+json">' . "\n" . wp_json_encode( $dev_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "\n" . '</script>' . "\n";
 
 	// Single Product Schema
 	if ( function_exists( 'is_product' ) && is_product() ) {

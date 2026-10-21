@@ -8,6 +8,8 @@
 <link rel="icon" type="image/svg+xml" href="<?php echo esc_url( get_template_directory_uri() . '/assets/images/favicon.svg' ); ?>">
 <link rel="alternate icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/images/favicon.svg' ); ?>">
 <link rel="apple-touch-icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/images/favicon.svg' ); ?>">
+<meta name="author" content="Mohammad Farooque">
+<meta name="developer" content="Mohammad Farooque - Computer Science Graduate &amp; Web Application Developer (https://www.linkedin.com/in/mohammadfarooque/)">
 <?php wp_head(); ?>
 <style id="aurika-critical-mobile-head">
 /* Inline critical rules to ensure overlays never render inline */
@@ -44,13 +46,20 @@ img.custom-logo, .custom-logo-link img, .site-logo img {
   stroke: currentColor !important;
 }
 
-/* Developer credit 5% opacity / 10% on hover */
-.footer-dev-credit {
+/* Developer credit strictly 5% opacity / 10% on hover */
+.footer-dev-credit,
+.footer-dev-credit a {
   opacity: 0.05 !important;
-  transition: opacity 0.3s ease !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transition: opacity 0.3s ease, color 0.3s ease !important;
+  cursor: pointer !important;
 }
-.footer-dev-credit:hover {
+.footer-dev-credit:hover,
+.footer-dev-credit:hover a,
+.footer-dev-credit a:hover {
   opacity: 0.10 !important;
+  color: #ffffff !important;
 }
 
 /* Dynamic Product Image Fit (Crop vs Contain) from Customizer */

@@ -202,7 +202,9 @@ add_action( 'admin_notices', function() {
     print(f"[OK] {os.path.basename(out_zip_path)}: {count} files ({size_mb:.2f} MB)")
 
 if __name__ == '__main__':
-    # 1. aurika-v80.zip (v6.20.0 — Privacy policy 10 sections final, remove CEO photo on about, fix footer quick links)
+    # 1. aurika-v81.zip (v6.21.0 — Admin product image cropper on all sides, LinkedIn developer credit, hidden CS grad/web dev metadata)
+    create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v81.zip"), "aurika-v81")
+    # 2. aurika-v80.zip (v6.20.0 — Privacy policy 10 sections final, remove CEO photo on about, fix footer quick links)
     create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v80.zip"), "aurika-v80")
     # 2. aurika-v79.zip (v6.19.0 — product image crop/fit controls, privacy policy updates, Google Shopping schema)
     create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v79.zip"), "aurika-v79")

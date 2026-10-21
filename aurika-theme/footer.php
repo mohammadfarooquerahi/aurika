@@ -208,8 +208,15 @@
 
     <p><?php echo esc_html( get_theme_mod( 'aurika_footer_copyright', 'Copyright © ' . date('Y') . ' Aurika — Where Art Meets Elegance. All Rights Reserved.' ) ); ?></p>
 
-    <!-- Developer Credit -->
-    <span class="footer-dev-credit">Developed by Mohammad Farooque</span>
+    <!-- Developer Credit with Hidden Semantic Metadata (5% visible, 10% on hover) -->
+    <div class="footer-dev-credit" itemscope itemtype="https://schema.org/Person">
+      <meta itemprop="name" content="Mohammad Farooque">
+      <meta itemprop="jobTitle" content="Web Application Developer">
+      <meta itemprop="description" content="Computer Science Graduate &amp; Web Application Developer">
+      <meta itemprop="alumniOf" content="Computer Science Graduate">
+      <meta itemprop="knowsAbout" content="Web Application Development, WordPress, WooCommerce, PHP">
+      <a href="https://www.linkedin.com/in/mohammadfarooque/" target="_blank" rel="noopener noreferrer" itemprop="url" title="Mohammad Farooque — Computer Science Graduate &amp; Web Application Developer" aria-label="Developed by Mohammad Farooque - Computer Science Graduate and Web Application Developer">Developed by Mohammad Farooque.</a>
+    </div>
   </div>
 
 </footer>
