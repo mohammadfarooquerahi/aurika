@@ -2,7 +2,7 @@
 Theme Name: Aurika
 Theme URI: https://aurika.online
 Description: Custom theme for Aurika - Where Art Meets Elegance.
-Version: 6.21.0
+Version: 6.22.0
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -2809,27 +2809,24 @@ table.variations td.value {
   box-sizing: border-box;
 }
 
-/* CRITICAL: Constrain All WP SVGs */
+/* CRITICAL: Constrain Gutenberg inline SVGs (eliminates giant unconstrained boxes) */
 .about-content-inner svg,
-.about-page-main svg,
-.page-content svg,
-.entry-content svg {
+.about-page-main svg {
   max-width: 28px !important;
   max-height: 28px !important;
-  width: 26px !important;
-  height: 26px !important;
+  width: 24px !important;
+  height: 24px !important;
   display: inline-block !important;
   vertical-align: middle !important;
-  fill: #b8860b !important;
-  color: #b8860b !important;
-  stroke: none !important;
+  fill: none !important;
+  stroke: #b8860b !important;
+  stroke-width: 1.8px !important;
 }
 
 .about-content-inner svg path,
-.about-page-main svg path,
-.page-content svg path,
-.entry-content svg path {
-  fill: #b8860b !important;
+.about-page-main svg path {
+  fill: none !important;
+  stroke: #b8860b !important;
 }
 
 .values-grid,
@@ -4719,6 +4716,32 @@ button#place_order:hover,
   color: var(--gold) !important;
 }
 
+.aurika-nav-pills-list li a .nav-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #b8860b !important;
+  transition: all 0.25s ease !important;
+}
+
+.aurika-nav-pills-list li a .nav-icon svg,
+.aurika-nav-pills-list li a .nav-icon svg * {
+  width: 17px !important;
+  height: 17px !important;
+  stroke: #b8860b !important;
+  fill: none !important;
+  stroke-width: 1.8px !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  transition: all 0.25s ease !important;
+}
+
+.aurika-nav-pills-list li a:hover .nav-icon svg,
+.aurika-nav-pills-list li a:hover .nav-icon svg * {
+  stroke: #d4af37 !important;
+  transform: scale(1.08) !important;
+}
+
 .aurika-nav-pills-list li.is-active a {
   background: #111111 !important;
   color: #ffffff !important;
@@ -4727,7 +4750,13 @@ button#place_order:hover,
 }
 
 .aurika-nav-pills-list li.is-active a .nav-icon {
-  color: var(--gold) !important;
+  color: #d4af37 !important;
+}
+
+.aurika-nav-pills-list li.is-active a .nav-icon svg,
+.aurika-nav-pills-list li.is-active a .nav-icon svg * {
+  stroke: #d4af37 !important;
+  fill: none !important;
 }
 
 /* Main Content Card (Full Width Single Column) */
@@ -4798,16 +4827,43 @@ button#place_order:hover,
 }
 
 .dash-card-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 1.5px solid var(--gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 18px;
-  color: var(--gold);
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  border: 1.5px solid #d4af37 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 18px !important;
+  color: #b8860b !important;
+  box-shadow: 0 4px 12px rgba(184, 134, 11, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.dash-card-icon svg,
+.dash-card-icon svg * {
+  width: 24px !important;
+  height: 24px !important;
+  stroke: #b8860b !important;
+  fill: none !important;
+  stroke-width: 1.8px !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  transition: all 0.3s ease !important;
+}
+
+.aurika-dash-card:hover .dash-card-icon {
+  background: #b8860b !important;
+  border-color: #b8860b !important;
+  box-shadow: 0 6px 18px rgba(184, 134, 11, 0.35) !important;
+  transform: scale(1.05) !important;
+}
+
+.aurika-dash-card:hover .dash-card-icon svg,
+.aurika-dash-card:hover .dash-card-icon svg * {
+  stroke: #ffffff !important;
+  fill: none !important;
 }
 
 .aurika-dash-card h4 {

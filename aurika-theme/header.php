@@ -25,23 +25,37 @@ img.custom-logo, .custom-logo-link img, .site-logo img {
   object-fit: contain !important;
 }
 
-/* Critical About Page SVG constraint (eliminates giant black cubes on about page) */
+/* Critical About Page SVG constraint */
 .about-page-main svg, .belief-card svg, .about-pillar-icon svg {
   max-width: 28px !important;
   max-height: 28px !important;
   height: auto !important;
-  fill: #b8860b !important;
+  fill: none !important;
+  stroke: #b8860b !important;
+  stroke-width: 1.8px !important;
 }
 
 /* Ensure account page outline icons and nav icons are NEVER filled with solid gold paint */
 .woocommerce-MyAccount-navigation svg,
+.woocommerce-MyAccount-navigation svg *,
 .woocommerce-MyAccount-content svg,
+.woocommerce-MyAccount-content svg *,
+.aurika-account-top-header svg,
+.aurika-account-top-header svg *,
 .aurika-dash-card svg,
+.aurika-dash-card svg *,
 .aurika-account-card svg,
+.aurika-account-card svg *,
 .aurika-profile-right svg,
+.aurika-profile-right svg *,
 .dash-card-icon svg,
+.dash-card-icon svg *,
+.btn-account-logout svg,
+.btn-account-logout svg *,
 .header-actions svg,
-.mobile-menu-toggle svg {
+.header-actions svg *,
+.mobile-menu-toggle svg,
+.mobile-menu-toggle svg * {
   fill: none !important;
   stroke: currentColor !important;
 }

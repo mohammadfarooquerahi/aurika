@@ -217,10 +217,15 @@ $about_content = trim( get_the_content() );
     box-shadow: 0 2px 6px rgba(0,0,0,0.03) !important;
     flex-shrink: 0 !important;
   }
-  .about-value-icon-box svg {
+  .about-value-icon-box svg,
+  .about-value-icon-box svg * {
     width: 22px !important;
     height: 22px !important;
-    fill: #b8860b !important;
+    fill: none !important;
+    stroke: #b8860b !important;
+    stroke-width: 1.8px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
   }
   .about-value-title {
     font-family: var(--font-sans, 'Poppins', sans-serif) !important;
