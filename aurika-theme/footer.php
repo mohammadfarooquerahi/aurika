@@ -208,7 +208,7 @@
 
     <p><?php echo esc_html( get_theme_mod( 'aurika_footer_copyright', 'Copyright © ' . date('Y') . ' Aurika — Where Art Meets Elegance. All Rights Reserved.' ) ); ?></p>
 
-    <!-- Developer Credit with Hidden Semantic Metadata (5% visible, 10% on hover) -->
+    <!-- Developer Credit with Hidden Semantic Metadata (10% visible, 20% on hover) -->
     <div class="footer-dev-credit" itemscope itemtype="https://schema.org/Person">
       <meta itemprop="name" content="Mohammad Farooque">
       <meta itemprop="jobTitle" content="Web Application Developer">

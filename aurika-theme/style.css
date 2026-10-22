@@ -2,7 +2,7 @@
 Theme Name: Aurika
 Theme URI: https://aurika.online
 Description: Custom theme for Aurika - Where Art Meets Elegance.
-Version: 6.23.0
+Version: 6.24.0
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -1835,14 +1835,14 @@ ul.products li.product a.button:not(.hunza-action-btn) {
   letter-spacing: 0.8px;
 }
 
-/* Developer Credit (5% visible, 10% on hover) */
+/* Developer Credit (10% visible, 20% on hover) */
 .footer-dev-credit,
 .footer-dev-credit a {
   display: inline-block;
   font-family: var(--font-sans);
   font-size: 10.5px;
-  color: rgba(255,255,255,0.05) !important;
-  opacity: 0.05 !important;
+  color: rgba(255,255,255,0.10) !important;
+  opacity: 0.10 !important;
   letter-spacing: 0.5px;
   text-decoration: none !important;
   transition: opacity 0.3s ease, color 0.3s ease;
@@ -1852,8 +1852,8 @@ ul.products li.product a.button:not(.hunza-action-btn) {
 .footer-dev-credit:hover,
 .footer-dev-credit:hover a,
 .footer-dev-credit a:hover {
-  color: rgba(255,255,255,0.10) !important;
-  opacity: 0.10 !important;
+  color: rgba(255,255,255,0.20) !important;
+  opacity: 0.20 !important;
 }
 
 /* =============================================================
@@ -8232,20 +8232,20 @@ body.page-id [class*="shop-2"] .woocommerce ul.products,
     letter-spacing: 0.5px !important;
   }
 
-  /* Developer Credit: strictly 5% visible, 10% on hover */
+  /* Developer Credit: strictly 10% visible, 20% on hover */
   .footer-dev-credit,
   .footer-dev-credit a {
-    color: rgba(255,255,255,0.05) !important;
+    color: rgba(255,255,255,0.10) !important;
     font-size: 10px !important;
-    opacity: 0.05 !important;
+    opacity: 0.10 !important;
     text-decoration: none !important;
   }
 
   .footer-dev-credit:hover,
   .footer-dev-credit:hover a,
   .footer-dev-credit a:hover {
-    color: rgba(255,255,255,0.10) !important;
-    opacity: 0.10 !important;
+    color: rgba(255,255,255,0.20) !important;
+    opacity: 0.20 !important;
   }
 
   .footer-bottom {

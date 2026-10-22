@@ -60,10 +60,10 @@ img.custom-logo, .custom-logo-link img, .site-logo img {
   stroke: currentColor !important;
 }
 
-/* Developer credit strictly 5% opacity / 10% on hover */
+/* Developer credit strictly 10% opacity / 20% on hover */
 .footer-dev-credit,
 .footer-dev-credit a {
-  opacity: 0.05 !important;
+  opacity: 0.10 !important;
   color: #ffffff !important;
   text-decoration: none !important;
   transition: opacity 0.3s ease, color 0.3s ease !important;
@@ -72,7 +72,7 @@ img.custom-logo, .custom-logo-link img, .site-logo img {
 .footer-dev-credit:hover,
 .footer-dev-credit:hover a,
 .footer-dev-credit a:hover {
-  opacity: 0.10 !important;
+  opacity: 0.20 !important;
   color: #ffffff !important;
 }
 
