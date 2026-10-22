@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once get_template_directory() . '/inc/customizer.php';
 require_once get_template_directory() . '/inc/seo.php';
 require_once get_template_directory() . '/inc/product-image-cropper.php';
+require_once get_template_directory() . '/inc/analytics.php';
 
 // ─────────────────────────────────────────────────────────
 // 0. CUSTOM NAV WALKER
@@ -125,7 +126,7 @@ function aurika_scripts() {
 		null
 	);
 
-	$theme_ver = wp_get_theme()->get( 'Version' ) ?: '6.22.0';
+	$theme_ver = wp_get_theme()->get( 'Version' ) ?: '6.23.0';
 	$css_file  = get_stylesheet_directory() . '/style.css';
 	$css_ver   = file_exists( $css_file ) ? $theme_ver . '.' . filemtime( $css_file ) : $theme_ver;
 

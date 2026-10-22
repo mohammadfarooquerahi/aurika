@@ -609,8 +609,91 @@ function aurika_customize_register( $wp_customize ) {
 		'section'     => 'aurika_marquee_section',
 		'type'        => 'checkbox',
 	) );
+
+	// ─────────────────────────────────────────────────────────
+	// 18. GOOGLE ANALYTICS & PERFORMANCE TRACKING
+	// ─────────────────────────────────────────────────────────
+	$wp_customize->add_section( 'aurika_analytics_section', array(
+		'title'       => __( '📈 Google Analytics & Tracking', 'aurika' ),
+		'panel'       => 'aurika_theme_panel',
+		'priority'    => 92,
+		'description' => __( 'Connect Google Analytics (GA4) to track real-time visitors, user acquisition channels, and WooCommerce sales performance.', 'aurika' ),
+	) );
+
+	$wp_customize->add_setting( 'aurika_ga4_measurement_id', array(
+		'default'           => '',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'aurika_ga4_measurement_id', array(
+		'label'       => __( 'Google Analytics 4 Measurement ID', 'aurika' ),
+		'description' => __( 'Enter your GA4 Measurement ID (format: G-XXXXXXXXXX). Found in Google Analytics → Admin → Data Streams.', 'aurika' ),
+		'section'     => 'aurika_analytics_section',
+		'type'        => 'text',
+	) );
+
+	$wp_customize->add_setting( 'aurika_ga4_track_ecommerce', array(
+		'default'           => true,
+		'sanitize_callback' => 'aurika_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'aurika_ga4_track_ecommerce', array(
+		'label'       => __( 'Enable Enhanced eCommerce Tracking', 'aurika' ),
+		'description' => __( 'Automatically sends WooCommerce events (view_item, add_to_cart, begin_checkout, and purchase with revenue) to Google Analytics.', 'aurika' ),
+		'section'     => 'aurika_analytics_section',
+		'type'        => 'checkbox',
+	) );
+
+	$wp_customize->add_setting( 'aurika_ga4_exclude_admin', array(
+		'default'           => true,
+		'sanitize_callback' => 'aurika_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'aurika_ga4_exclude_admin', array(
+		'label'       => __( 'Exclude Admin & Store Manager Visits', 'aurika' ),
+		'description' => __( 'Recommended. Prevents store owners and admins from inflating live visitor counts while managing the website.', 'aurika' ),
+		'section'     => 'aurika_analytics_section',
+		'type'        => 'checkbox',
+	) );
+
+	$wp_customize->add_setting( 'aurika_gtm_id', array(
+		'default'           => '',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'aurika_gtm_id', array(
+		'label'       => __( 'Google Tag Manager ID (Optional)', 'aurika' ),
+		'description' => __( 'Optional. If you use Google Tag Manager, enter your container ID (format: GTM-XXXXXXX).', 'aurika' ),
+		'section'     => 'aurika_analytics_section',
+		'type'        => 'text',
+	) );
+
+	$wp_customize->add_setting( 'aurika_custom_head_tracking', array(
+		'default'           => '',
+		'sanitize_callback' => 'aurika_sanitize_tracking_scripts',
+	) );
+	$wp_customize->add_control( 'aurika_custom_head_tracking', array(
+		'label'       => __( 'Custom Header Scripts (<head>)', 'aurika' ),
+		'description' => __( 'Paste any additional tracking codes or pixels (e.g. Meta / Facebook Pixel, TikTok Pixel, Pinterest tag).', 'aurika' ),
+		'section'     => 'aurika_analytics_section',
+		'type'        => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'aurika_custom_body_tracking', array(
+		'default'           => '',
+		'sanitize_callback' => 'aurika_sanitize_tracking_scripts',
+	) );
+	$wp_customize->add_control( 'aurika_custom_body_tracking', array(
+		'label'       => __( 'Custom Footer Scripts (before </body>)', 'aurika' ),
+		'description' => __( 'Paste any conversion scripts or chat widgets that should load at the end of the page.', 'aurika' ),
+		'section'     => 'aurika_analytics_section',
+		'type'        => 'textarea',
+	) );
 }
 
 function aurika_sanitize_checkbox( $checked ) {
 	return ( ( isset( $checked ) && true == $checked ) ? true : false );
+}
+
+function aurika_sanitize_tracking_scripts( $code ) {
+	if ( current_user_can( 'unfiltered_html' ) ) {
+		return $code;
+	}
+	return wp_kses_post( $code );
 }
