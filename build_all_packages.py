@@ -134,8 +134,8 @@ def create_installer_plugin(out_zip_path):
 /**
  * Plugin Name: Aurika Theme Auto-Installer & Activator
  * Plugin URI: https://aurika.online
- * Description: 1-Click installer that copies all Aurika v6.26.0 Theme files to wp-content/themes/aurika-theme/ and activates it automatically.
- * Version: 6.26.0
+ * Description: 1-Click installer that copies all Aurika v6.27.0 Theme files to wp-content/themes/aurika-theme/ and activates it automatically.
+ * Version: 6.27.0
  * Author: Aurika Team
  */
 
@@ -177,7 +177,7 @@ function aurika_installer_recurse_copy( $src, $dst ) {
 }
 
 add_action( 'admin_notices', function() {
-    echo '<div class="notice notice-success is-dismissible"><p><strong>✨ Aurika Theme v6.26.0 is successfully installed and activated! All updates applied!</strong></p></div>';
+    echo '<div class="notice notice-success is-dismissible"><p><strong>✨ Aurika Theme v6.27.0 is successfully installed and activated! All updates applied!</strong></p></div>';
 } );
 """
     with open(os.path.join(temp_plugin_dir, "aurika-theme-installer", "aurika-theme-installer.php"), "w", encoding="utf-8") as f:
@@ -202,7 +202,9 @@ add_action( 'admin_notices', function() {
     print(f"[OK] {os.path.basename(out_zip_path)}: {count} files ({size_mb:.2f} MB)")
 
 if __name__ == '__main__':
-    # 1. aurika-v86.zip (v6.26.0 — 1000x1000 Uniform Square Product Images & Perfect Fit + Bulletproof 10% Dev Credit / 20% Hover)
+    # 1. aurika-v87.zip (v6.27.0 — Safe activation without object-cache hang or duplicate SKU exception)
+    create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v87.zip"), "aurika-v87")
+    # 2. aurika-v86.zip (v6.26.0 — 1000x1000 Uniform Square Product Images & Perfect Fit + Bulletproof 10% Dev Credit / 20% Hover)
     create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v86.zip"), "aurika-v86")
     # 2. aurika-v85.zip (v6.25.0 — 1000x1000 Uniform Square Product Image Standard, 1:1 Aspect Ratio & Perfect Fit)
     create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v85.zip"), "aurika-v85")

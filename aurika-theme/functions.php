@@ -127,7 +127,7 @@ function aurika_scripts() {
 		null
 	);
 
-	$theme_ver = wp_get_theme()->get( 'Version' ) ?: '6.26.0';
+	$theme_ver = wp_get_theme()->get( 'Version' ) ?: '6.27.0';
 	$css_file  = get_stylesheet_directory() . '/style.css';
 	$css_ver   = file_exists( $css_file ) ? $theme_ver . '.' . filemtime( $css_file ) : $theme_ver;
 
@@ -162,16 +162,11 @@ add_action( 'wp_enqueue_scripts', 'aurika_scripts', 999 );
 // 2b-1. AUTOMATIC CACHE-BUSTING & MULTI-DEVICE UNIFICATION
 // ─────────────────────────────────────────────────────────
 function aurika_purge_all_caches() {
-	// Purge LiteSpeed desktop & mobile caches
+	// Purge LiteSpeed desktop & mobile caches safely without touching Redis object-cache socket
 	if ( class_exists( '\LiteSpeed\Purge' ) ) {
 		\LiteSpeed\Purge::purge_all();
 	}
 	do_action( 'litespeed_purge_all' );
-
-	// Purge standard WordPress object caches
-	if ( function_exists( 'wp_cache_flush' ) ) {
-		wp_cache_flush();
-	}
 }
 add_action( 'after_switch_theme', 'aurika_purge_all_caches' );
 add_action( 'upgrader_process_complete', 'aurika_purge_all_caches' );
@@ -1661,9 +1656,8 @@ function aurika_sync_home_elementor_content() {
 }
 
 // ─────────────────────────────────────────────────────────
-// 8. ONE-CLICK OFFICIAL PRODUCTS AUTO-SETUP & HOME SYNC
+// 8. ONE-CLICK OFFICIAL PRODUCTS AUTO-SETUP & HOME SYNC (MANUAL VIA SETUP PAGE)
 // ─────────────────────────────────────────────────────────
-add_action( 'after_switch_theme', 'aurika_create_official_products' );
 
 add_action( 'admin_menu', function() {
 	add_theme_page(
@@ -1925,7 +1919,6 @@ function aurika_ensure_policy_pages() {
 	}
 	return $created;
 }
-add_action( 'after_switch_theme', 'aurika_ensure_policy_pages' );
 
 
 function aurika_create_official_products() {
@@ -2065,7 +2058,10 @@ function aurika_create_official_products() {
 	$created_count = 0;
 
 	foreach ( $products as $item ) {
-		// Check if product already exists by title
+		// Check if product already exists by SKU or title to prevent duplicate SKU exceptions
+		if ( function_exists( 'wc_get_product_id_by_sku' ) && wc_get_product_id_by_sku( $item['sku'] ) ) {
+			continue;
+		}
 		$existing = get_page_by_title( $item['title'], OBJECT, 'product' );
 		if ( $existing ) {
 			continue;
@@ -2078,26 +2074,31 @@ function aurika_create_official_products() {
 		}
 		$cat_id = is_array( $term ) ? (int) $term['term_id'] : (int) $term;
 
-		$p = new WC_Product_Simple();
-		$p->set_name( $item['title'] );
-		$p->set_status( 'publish' );
-		$p->set_catalog_visibility( 'visible' );
-		$p->set_description( $item['desc'] );
-		$p->set_short_description( $item['short'] );
-		$p->set_sku( $item['sku'] );
-		$p->set_regular_price( $item['price'] );
-		if ( ! empty( $item['sale'] ) ) {
-			$p->set_sale_price( $item['sale'] );
-			$p->set_price( $item['sale'] );
-		} else {
-			$p->set_price( $item['price'] );
-		}
-		$p->set_manage_stock( false );
-		$p->set_stock_status( 'instock' );
-		$p->set_category_ids( array( $cat_id ) );
-		$p->save();
+		try {
+			$p = new WC_Product_Simple();
+			$p->set_name( $item['title'] );
+			$p->set_status( 'publish' );
+			$p->set_catalog_visibility( 'visible' );
+			$p->set_description( $item['desc'] );
+			$p->set_short_description( $item['short'] );
+			$p->set_sku( $item['sku'] );
+			$p->set_regular_price( $item['price'] );
+			if ( ! empty( $item['sale'] ) ) {
+				$p->set_sale_price( $item['sale'] );
+				$p->set_price( $item['sale'] );
+			} else {
+				$p->set_price( $item['price'] );
+			}
+			$p->set_manage_stock( false );
+			$p->set_stock_status( 'instock' );
+			$p->set_category_ids( array( $cat_id ) );
+			$p->save();
 
-		$created_count++;
+			$created_count++;
+		} catch ( Throwable $e ) {
+			// Silently ignore any product creation error, never throw fatal exception
+			continue;
+		}
 	}
 
 	return $created_count;
