@@ -287,20 +287,24 @@ add_filter( 'woocommerce_product_thumbnails_columns', function() { return 4; } )
 // 1000x1000 Uniform Square Product Image Sizing Standard
 add_filter( 'woocommerce_get_image_size_thumbnail', 'aurika_wc_thumbnail_1000' );
 function aurika_wc_thumbnail_1000( $size ) {
-	return array(
-		'width'  => 1000,
-		'height' => 1000,
-		'crop'   => 1,
-	);
+	if ( ! is_array( $size ) ) {
+		$size = array();
+	}
+	$size['width']  = 1000;
+	$size['height'] = 1000;
+	$size['crop']   = 1;
+	return $size;
 }
 
 add_filter( 'woocommerce_get_image_size_single', 'aurika_wc_single_1000' );
 function aurika_wc_single_1000( $size ) {
-	return array(
-		'width'  => 1000,
-		'height' => 1000,
-		'crop'   => 0,
-	);
+	if ( ! is_array( $size ) ) {
+		$size = array();
+	}
+	$size['width']  = 1000;
+	$size['height'] = 1000;
+	$size['crop']   = 0;
+	return $size;
 }
 
 // ─────────────────────────────────────────────────────────
