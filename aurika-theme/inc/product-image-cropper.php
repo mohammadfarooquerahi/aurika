@@ -163,11 +163,8 @@ function aurika_render_cropper_modal_html() {
 						<!-- Aspect Ratios -->
 						<div class="aurika-ratio-group">
 							<span class="aurika-ratio-label">Aspect Ratio:</span>
-							<button type="button" class="aurika-tool-btn aurika-ratio-btn is-active" data-ratio="1" title="1:1 Square Catalog Standard">
-								■ 1:1 Square (Catalog Standard)
-							</button>
-							<button type="button" class="aurika-tool-btn aurika-ratio-btn" data-ratio="portrait" title="4:5 Portrait Card Ratio">
-								▯ 4:5 Portrait (Card Ratio)
+							<button type="button" class="aurika-tool-btn aurika-ratio-btn is-active" data-ratio="1" title="1:1 Square 1000x1000 Catalog Standard">
+								■ 1:1 Square (1000x1000 Standard)
 							</button>
 							<button type="button" class="aurika-tool-btn aurika-ratio-btn" data-ratio="free" title="Unlock: Crop Any Side Freely">
 								⚏ Freeform (All Sides)

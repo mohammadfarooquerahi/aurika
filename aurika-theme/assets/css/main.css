@@ -1000,7 +1000,9 @@ ul.products li.product .hunza-card-image-wrap,
 .woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
   position: relative;
   width: 100%;
-  height: 260px;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  max-height: none !important;
   background: #fbf9f6;
   border-radius: 10px;
   overflow: hidden;
@@ -1025,7 +1027,7 @@ ul.products li.product > a > img,
 .woocommerce ul.products li.product a img {
   width: 100% !important;
   height: 100% !important;
-  max-height: 260px !important;
+  max-height: none !important;
   object-fit: cover !important;
   object-position: center center !important;
   border-radius: 10px !important;
@@ -1040,13 +1042,15 @@ ul.products li.product > a > img,
   .hunza-card-image-wrap,
   ul.products li.product .hunza-card-image-wrap,
   .woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
-    height: 180px !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    max-height: none !important;
   }
   .hunza-card-img,
   ul.products li.product a img,
   ul.products li.product > a > img,
   .woocommerce ul.products li.product a img {
-    max-height: 180px !important;
+    max-height: none !important;
   }
 }
 
@@ -3068,7 +3072,9 @@ input.qty::-webkit-outer-spin-button {
     grid-template-columns: repeat(3, 1fr) !important;
   }
   .hunza-card-image-wrap {
-    height: 240px !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    max-height: none !important;
   }
   .reviews-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -3098,7 +3104,9 @@ input.qty::-webkit-outer-spin-button {
     gap: 16px 10px !important;
   }
   .hunza-card-image-wrap {
-    height: 180px !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    max-height: none !important;
   }
   .hunza-card-title,
   .woocommerce-loop-product__title {

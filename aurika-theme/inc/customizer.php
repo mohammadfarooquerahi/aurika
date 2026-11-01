@@ -433,17 +433,17 @@ function aurika_customize_register( $wp_customize ) {
 	
 	// ── Product Image Fit & Cropping Control ──
 	$wp_customize->add_setting( 'aurika_product_image_fit', array(
-		'default'           => 'contain',
+		'default'           => 'cover',
 		'sanitize_callback' => 'sanitize_key',
 	) );
 	$wp_customize->add_control( 'aurika_product_image_fit', array(
 		'label'       => __( '🖼️ Main Product Image Fit', 'aurika' ),
-		'description' => __( 'Choose "Full Image / No Crop" so the entire candle is visible inside the frame without edges being cut off.', 'aurika' ),
+		'description' => __( 'Optimized for 1000x1000 square images. Choose "Fill Frame (cover)" to display clean, full-bleed images in 1:1 luxury frames.', 'aurika' ),
 		'section'     => 'aurika_product_defaults_section',
 		'type'        => 'select',
 		'choices'     => array(
-			'contain' => __( 'Full Image / No Crop (contain) – Recommended', 'aurika' ),
-			'cover'   => __( 'Fill Entire Frame (cover – may crop edges)', 'aurika' ),
+			'cover'   => __( 'Fill Frame (cover – Recommended for 1000x1000)', 'aurika' ),
+			'contain' => __( 'Fit Inside (contain – no crop)', 'aurika' ),
 		),
 	) );
 	

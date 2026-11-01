@@ -202,7 +202,9 @@ add_action( 'admin_notices', function() {
     print(f"[OK] {os.path.basename(out_zip_path)}: {count} files ({size_mb:.2f} MB)")
 
 if __name__ == '__main__':
-    # 1. aurika-v84.zip (v6.24.0 — Developer credit opacity update: 10% visible, 20% on hover)
+    # 1. aurika-v85.zip (v6.25.0 — 1000x1000 Uniform Square Product Image Standard, 1:1 Aspect Ratio & Perfect Fit)
+    create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v85.zip"), "aurika-v85")
+    # 2. aurika-v84.zip (v6.24.0 — Developer credit opacity update: 10% visible, 20% on hover)
     create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v84.zip"), "aurika-v84")
     # 2. aurika-v83.zip (v6.23.0 — Full Google Analytics 4 & Performance Tracking Engine, Settings page & Customizer controls)
     create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v83.zip"), "aurika-v83")

@@ -67,9 +67,10 @@ function aurika_setup() {
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ) );
 	add_theme_support( 'custom-logo', array( 'height' => 80, 'width' => 240, 'flex-height' => true, 'flex-width' => true ) );
 
-	// WooCommerce
+	// WooCommerce (1000x1000 Uniform Square Standard)
 	add_theme_support( 'woocommerce', array(
-		'thumbnail_image_width'         => 600,
+		'thumbnail_image_width'         => 1000,
+		'single_image_width'            => 1000,
 		'gallery_thumbnail_image_width' => 300,
 	) );
 	add_theme_support( 'wc-product-gallery-zoom' );
@@ -126,7 +127,7 @@ function aurika_scripts() {
 		null
 	);
 
-	$theme_ver = wp_get_theme()->get( 'Version' ) ?: '6.24.0';
+	$theme_ver = wp_get_theme()->get( 'Version' ) ?: '6.25.0';
 	$css_file  = get_stylesheet_directory() . '/style.css';
 	$css_ver   = file_exists( $css_file ) ? $theme_ver . '.' . filemtime( $css_file ) : $theme_ver;
 
@@ -282,6 +283,25 @@ add_action( 'widgets_init', 'aurika_widgets_init' );
 // Our theme CSS overrides product cards and single product page
 add_filter( 'loop_shop_columns', function() { return 4; } );
 add_filter( 'woocommerce_product_thumbnails_columns', function() { return 4; } );
+
+// 1000x1000 Uniform Square Product Image Sizing Standard
+add_filter( 'woocommerce_get_image_size_thumbnail', 'aurika_wc_thumbnail_1000' );
+function aurika_wc_thumbnail_1000( $size ) {
+	return array(
+		'width'  => 1000,
+		'height' => 1000,
+		'crop'   => 1,
+	);
+}
+
+add_filter( 'woocommerce_get_image_size_single', 'aurika_wc_single_1000' );
+function aurika_wc_single_1000( $size ) {
+	return array(
+		'width'  => 1000,
+		'height' => 1000,
+		'crop'   => 0,
+	);
+}
 
 // ─────────────────────────────────────────────────────────
 // 5. HELPER FUNCTIONS & WOOCOMMERCE CART FRAGMENTS

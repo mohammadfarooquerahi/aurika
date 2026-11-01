@@ -76,9 +76,18 @@ img.custom-logo, .custom-logo-link img, .site-logo img {
   color: #ffffff !important;
 }
 
-/* Dynamic Product Image Fit (Crop vs Contain) from Customizer */
+/* 1000x1000 Uniform Product Image Standard (1:1 Ratio) & Dynamic Fit */
+.hunza-card-image-wrap,
+ul.products li.product .hunza-card-image-wrap,
+.woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+}
+.product-main-image-wrap {
+  aspect-ratio: 1 / 1 !important;
+}
 <?php
-$aurika_prod_fit = get_theme_mod( 'aurika_product_image_fit', 'contain' );
+$aurika_prod_fit = get_theme_mod( 'aurika_product_image_fit', 'cover' );
 $aurika_card_fit = get_theme_mod( 'aurika_card_image_fit', 'cover' );
 ?>
 .gallery-slide,

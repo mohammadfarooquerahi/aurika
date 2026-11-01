@@ -272,10 +272,8 @@
       var ratio = $(this).data('ratio');
       if (ratio === 'free') {
         cropperInstance.setAspectRatio(NaN); // Freeform: drag all sides freely
-      } else if (ratio === 'portrait') {
-        cropperInstance.setAspectRatio(0.77); // 1:1.3 matching Aurika product card aspect ratio
       } else {
-        cropperInstance.setAspectRatio(1); // 1:1 Square
+        cropperInstance.setAspectRatio(1); // 1:1 Square (1000x1000 standard)
       }
     });
 
@@ -313,14 +311,22 @@
       var $saveBtn = $(this);
       $saveBtn.addClass('is-saving').prop('disabled', true);
 
-      // Get high-res cropped canvas
-      var canvas = cropperInstance.getCroppedCanvas({
-        maxWidth: 2400,
-        maxHeight: 2400,
+      // Get high-res cropped canvas (1000x1000 uniform standard)
+      var cropData = cropperInstance.getData();
+      var isSquare = Math.abs(cropData.width - cropData.height) < 20;
+      var canvasOptions = {
         fillColor: '#ffffff',
         imageSmoothingEnabled: true,
         imageSmoothingQuality: 'high'
-      });
+      };
+      if (isSquare) {
+        canvasOptions.width = 1000;
+        canvasOptions.height = 1000;
+      } else {
+        canvasOptions.maxWidth = 2400;
+        canvasOptions.maxHeight = 2400;
+      }
+      var canvas = cropperInstance.getCroppedCanvas(canvasOptions);
 
       if (!canvas) {
         alert('Could not generate cropped canvas. Please try again.');

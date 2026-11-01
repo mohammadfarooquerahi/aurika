@@ -2,7 +2,7 @@
 Theme Name: Aurika
 Theme URI: https://aurika.online
 Description: Custom theme for Aurika - Where Art Meets Elegance.
-Version: 6.24.0
+Version: 6.25.0
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -1000,7 +1000,7 @@ ul.products li.product .hunza-card-image-wrap,
 .woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1.3 !important;
+  aspect-ratio: 1 / 1 !important;
   height: auto !important;
   max-height: none !important;
   background: #faf8f5;
@@ -1042,7 +1042,7 @@ ul.products li.product > a > img,
   .hunza-card-image-wrap,
   ul.products li.product .hunza-card-image-wrap,
   .woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
-    aspect-ratio: 1 / 1.3 !important;
+    aspect-ratio: 1 / 1 !important;
     height: auto !important;
     max-height: none !important;
     border-radius: 6px !important;
@@ -1992,13 +1992,15 @@ ul.products li.product a.button:not(.hunza-action-btn) {
   background: #faf8f5;
   border-radius: 12px;
   overflow: hidden;
-  height: 480px;
-  max-height: 480px;
+  aspect-ratio: 1 / 1 !important;
+  width: 100%;
+  height: auto !important;
+  max-height: 560px;
   border: 1px solid #f0ebe4;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 10px;
+  padding: 0;
 }
 
 .product-main-image {
@@ -2015,7 +2017,7 @@ ul.products li.product a.button:not(.hunza-action-btn) {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain !important;
+  object-fit: cover !important;
   object-position: center center !important;
   opacity: 0;
   transition: opacity 0.35s ease;
@@ -2023,8 +2025,11 @@ ul.products li.product a.button:not(.hunza-action-btn) {
 
 @media (max-width: 768px) {
   .product-main-image-wrap {
-    height: 350px !important;
-    max-height: 350px !important;
+    aspect-ratio: 1 / 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 0 !important;
   }
 }
 
@@ -7179,11 +7184,11 @@ body.page-id [class*="shop-2"] .woocommerce ul.products,
     margin: 0 !important;
   }
 
-  /* Product Card Image: Aspect-ratio 1:1.3 centered */
+  /* Product Card Image: Aspect-ratio 1:1 square centered (1000x1000) */
   .hunza-card-image-wrap,
   ul.products li.product .hunza-card-image-wrap,
   .woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
-    aspect-ratio: 1 / 1.3 !important;
+    aspect-ratio: 1 / 1 !important;
     height: auto !important;
     max-height: none !important;
     border-radius: 6px !important;
@@ -7509,9 +7514,10 @@ body.page-id [class*="shop-2"] .woocommerce ul.products,
   .product-main-image-wrap {
     order: 1 !important;
     width: 100% !important;
-    height: 350px !important;
-    max-height: 380px !important;
-    min-height: 280px !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
     background: #faf8f5 !important;
     border: 1px solid #f0ebe4 !important;
     border-radius: 10px !important;
@@ -7521,6 +7527,7 @@ body.page-id [class*="shop-2"] .woocommerce ul.products,
     overflow: hidden !important;
     position: relative !important;
     margin-bottom: 10px !important;
+    padding: 0 !important;
   }
 
   .product-main-image {
@@ -7538,9 +7545,9 @@ body.page-id [class*="shop-2"] .woocommerce ul.products,
     height: 100% !important;
     max-width: 100% !important;
     max-height: 100% !important;
-    object-fit: contain !important;
+    object-fit: cover !important;
     object-position: center center !important;
-    padding: 6px !important;
+    padding: 0 !important;
     display: none !important;
   }
 
