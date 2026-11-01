@@ -61,27 +61,35 @@ img.custom-logo, .custom-logo-link img, .site-logo img {
 }
 
 /* Developer credit strictly 10% opacity / 20% on hover */
-.footer-dev-credit,
-.footer-dev-credit a {
+.footer-dev-credit {
   opacity: 0.10 !important;
+  transition: opacity 0.3s ease !important;
+}
+.footer-dev-credit:hover {
+  opacity: 0.20 !important;
+}
+.footer-dev-credit a {
   color: #ffffff !important;
+  opacity: 1 !important;
   text-decoration: none !important;
-  transition: opacity 0.3s ease, color 0.3s ease !important;
   cursor: pointer !important;
 }
-.footer-dev-credit:hover,
-.footer-dev-credit:hover a,
 .footer-dev-credit a:hover {
-  opacity: 0.20 !important;
   color: #ffffff !important;
+  text-decoration: underline !important;
 }
 
 /* 1000x1000 Uniform Product Image Standard (1:1 Ratio) & Dynamic Fit */
 .hunza-card-image-wrap,
 ul.products li.product .hunza-card-image-wrap,
-.woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
+.woocommerce ul.products li.product a.woocommerce-LoopProduct-link,
+.woocommerce ul.products li.product .woocommerce-loop-product__link,
+.woocommerce ul.products li.product a:first-child,
+.woocommerce li.product a:first-child {
   aspect-ratio: 1 / 1 !important;
+  width: 100% !important;
   height: auto !important;
+  max-height: none !important;
 }
 .product-main-image-wrap {
   aspect-ratio: 1 / 1 !important;
@@ -100,7 +108,9 @@ $aurika_card_fit = get_theme_mod( 'aurika_card_image_fit', 'cover' );
 .hunza-card-img,
 ul.products li.product a img,
 ul.products li.product > a > img,
-.woocommerce ul.products li.product a img {
+.woocommerce ul.products li.product a img,
+.woocommerce ul.products li.product img,
+.woocommerce li.product img {
   object-fit: <?php echo esc_attr( $aurika_card_fit ); ?> !important;
   object-position: center center !important;
 }
@@ -239,9 +249,10 @@ ul.products li.product > a > img,
   .product-main-image-wrap {
     order: 1 !important;
     width: 100% !important;
-    height: 350px !important;
-    max-height: 380px !important;
-    min-height: 280px !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;

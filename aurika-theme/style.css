@@ -2,7 +2,7 @@
 Theme Name: Aurika
 Theme URI: https://aurika.online
 Description: Custom theme for Aurika - Where Art Meets Elegance.
-Version: 6.25.0
+Version: 6.26.0
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -997,7 +997,10 @@ ul.products li.product:hover,
 
 .hunza-card-image-wrap,
 ul.products li.product .hunza-card-image-wrap,
-.woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
+.woocommerce ul.products li.product a.woocommerce-LoopProduct-link,
+.woocommerce ul.products li.product .woocommerce-loop-product__link,
+.woocommerce ul.products li.product a:first-child,
+.woocommerce li.product a:first-child {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1 !important;
@@ -1024,7 +1027,9 @@ ul.products li.product .hunza-card-image-wrap,
 .hunza-card-img,
 ul.products li.product a img,
 ul.products li.product > a > img,
-.woocommerce ul.products li.product a img {
+.woocommerce ul.products li.product a img,
+.woocommerce ul.products li.product img,
+.woocommerce li.product img {
   width: 100% !important;
   height: 100% !important;
   max-height: none !important;
@@ -1041,8 +1046,12 @@ ul.products li.product > a > img,
 @media (max-width: 640px) {
   .hunza-card-image-wrap,
   ul.products li.product .hunza-card-image-wrap,
-  .woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
+  .woocommerce ul.products li.product a.woocommerce-LoopProduct-link,
+  .woocommerce ul.products li.product .woocommerce-loop-product__link,
+  .woocommerce ul.products li.product a:first-child,
+  .woocommerce li.product a:first-child {
     aspect-ratio: 1 / 1 !important;
+    width: 100% !important;
     height: auto !important;
     max-height: none !important;
     border-radius: 6px !important;
@@ -1050,7 +1059,9 @@ ul.products li.product > a > img,
   .hunza-card-img,
   ul.products li.product a img,
   ul.products li.product > a > img,
-  .woocommerce ul.products li.product a img {
+  .woocommerce ul.products li.product a img,
+  .woocommerce ul.products li.product img,
+  .woocommerce li.product img {
     max-height: none !important;
     border-radius: 6px !important;
     object-position: center center !important;
@@ -1835,25 +1846,33 @@ ul.products li.product a.button:not(.hunza-action-btn) {
   letter-spacing: 0.8px;
 }
 
-/* Developer Credit (10% visible, 20% on hover) */
-.footer-dev-credit,
-.footer-dev-credit a {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 10.5px;
-  color: rgba(255,255,255,0.10) !important;
+/* Developer Credit: Exactly 10% visible default, 20% on hover */
+.footer-dev-credit {
+  display: block !important;
+  margin-top: 8px !important;
   opacity: 0.10 !important;
-  letter-spacing: 0.5px;
+  transition: opacity 0.3s ease !important;
+}
+
+.footer-dev-credit:hover {
+  opacity: 0.20 !important;
+}
+
+.footer-dev-credit a {
+  display: inline-block !important;
+  font-family: var(--font-sans) !important;
+  font-size: 11px !important;
+  color: #ffffff !important;
+  opacity: 1 !important; /* Prevent double-compounding opacity */
+  letter-spacing: 0.5px !important;
   text-decoration: none !important;
-  transition: opacity 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease !important;
   cursor: pointer !important;
 }
 
-.footer-dev-credit:hover,
-.footer-dev-credit:hover a,
 .footer-dev-credit a:hover {
-  color: rgba(255,255,255,0.20) !important;
-  opacity: 0.20 !important;
+  color: #ffffff !important;
+  text-decoration: underline !important;
 }
 
 /* =============================================================
@@ -7187,8 +7206,12 @@ body.page-id [class*="shop-2"] .woocommerce ul.products,
   /* Product Card Image: Aspect-ratio 1:1 square centered (1000x1000) */
   .hunza-card-image-wrap,
   ul.products li.product .hunza-card-image-wrap,
-  .woocommerce ul.products li.product a.woocommerce-LoopProduct-link {
+  .woocommerce ul.products li.product a.woocommerce-LoopProduct-link,
+  .woocommerce ul.products li.product .woocommerce-loop-product__link,
+  .woocommerce ul.products li.product a:first-child,
+  .woocommerce li.product a:first-child {
     aspect-ratio: 1 / 1 !important;
+    width: 100% !important;
     height: auto !important;
     max-height: none !important;
     border-radius: 6px !important;
@@ -7202,7 +7225,9 @@ body.page-id [class*="shop-2"] .woocommerce ul.products,
   .hunza-card-img,
   ul.products li.product a img,
   ul.products li.product > a > img,
-  .woocommerce ul.products li.product a img {
+  .woocommerce ul.products li.product a img,
+  .woocommerce ul.products li.product img,
+  .woocommerce li.product img {
     width: 100% !important;
     height: 100% !important;
     max-height: none !important;
@@ -8240,19 +8265,22 @@ body.page-id [class*="shop-2"] .woocommerce ul.products,
   }
 
   /* Developer Credit: strictly 10% visible, 20% on hover */
-  .footer-dev-credit,
-  .footer-dev-credit a {
-    color: rgba(255,255,255,0.10) !important;
-    font-size: 10px !important;
+  .footer-dev-credit {
     opacity: 0.10 !important;
+    margin-top: 6px !important;
+  }
+  .footer-dev-credit:hover {
+    opacity: 0.20 !important;
+  }
+  .footer-dev-credit a {
+    color: #ffffff !important;
+    font-size: 10px !important;
+    opacity: 1 !important;
     text-decoration: none !important;
   }
-
-  .footer-dev-credit:hover,
-  .footer-dev-credit:hover a,
   .footer-dev-credit a:hover {
-    color: rgba(255,255,255,0.20) !important;
-    opacity: 0.20 !important;
+    color: #ffffff !important;
+    text-decoration: underline !important;
   }
 
   .footer-bottom {
