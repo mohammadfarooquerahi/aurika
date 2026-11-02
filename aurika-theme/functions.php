@@ -127,7 +127,7 @@ function aurika_scripts() {
 		null
 	);
 
-	$theme_ver = wp_get_theme()->get( 'Version' ) ?: '6.28.0';
+	$theme_ver = wp_get_theme()->get( 'Version' ) ?: '6.29.0';
 	$css_file  = get_stylesheet_directory() . '/style.css';
 	$css_ver   = file_exists( $css_file ) ? $theme_ver . '.' . filemtime( $css_file ) : $theme_ver;
 
@@ -1397,21 +1397,38 @@ function aurika_get_home_template_html() {
 	) );
 
 	if ( ! empty( $product_cats ) && ! is_wp_error( $product_cats ) ) {
+		$customizer_candles_img = get_theme_mod( 'aurika_cat_candles_img', '' );
+		$customizer_diy_img     = get_theme_mod( 'aurika_cat_diy_img', '' );
+
 		foreach ( $product_cats as $cat ) {
 			$cat_link  = get_term_link( $cat );
 			$cat_thumb = get_term_meta( $cat->term_id, 'thumbnail_id', true );
 			$cat_img   = $cat_thumb ? wp_get_attachment_url( $cat_thumb ) : '';
-			$img_style = $cat_img ? ' style="background-image: url(' . esc_url($cat_img) . '); background-size: cover; background-position: center;"' : '';
+			$slug      = $cat->slug;
+
+			// Priority 1: Customizer uploaded image
+			if ( strpos( $slug, 'candle' ) !== false && ! empty( $customizer_candles_img ) ) {
+				$cat_img = $customizer_candles_img;
+			} elseif ( ( strpos( $slug, 'diy' ) !== false || strpos( $slug, 'art' ) !== false ) && ! empty( $customizer_diy_img ) ) {
+				$cat_img = $customizer_diy_img;
+			}
+
+			// Background style (applied if image exists from Customizer or WooCommerce Thumbnail)
+			$img_style = $cat_img ? ' style="background-image: url(' . esc_url( $cat_img ) . '); background-size: cover; background-position: center;"' : '';
 			$img_class = 'category-img-box';
-			$slug = $cat->slug;
-			if ( strpos($slug, 'candle') !== false ) $img_class .= ' category-img-candles';
-			elseif ( strpos($slug, 'diy') !== false || strpos($slug, 'art') !== false ) $img_class .= ' category-img-diy';
+			if ( empty( $cat_img ) ) {
+				if ( strpos( $slug, 'candle' ) !== false ) {
+					$img_class .= ' category-img-candles';
+				} elseif ( strpos( $slug, 'diy' ) !== false || strpos( $slug, 'art' ) !== false ) {
+					$img_class .= ' category-img-diy';
+				}
+			}
 
 			$cat_cards .= '
       <div class="category-card">
-        <a href="' . esc_url($cat_link) . '">
-          <div class="' . esc_attr($img_class) . '"' . $img_style . '></div>
-          <h3 class="category-title">' . esc_html($cat->name) . '</h3>
+        <a href="' . esc_url( $cat_link ) . '">
+          <div class="' . esc_attr( $img_class ) . '"' . $img_style . '></div>
+          <h3 class="category-title">' . esc_html( $cat->name ) . '</h3>
           <span class="category-link">Shop Collection &rarr;</span>
         </a>
       </div>';

@@ -392,6 +392,20 @@ function aurika_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'aurika_show_category_section', array( 'default' => true, 'sanitize_callback' => 'aurika_sanitize_checkbox' ) );
 	$wp_customize->add_control( 'aurika_show_category_section', array( 'label' => __( 'Show Category Section', 'aurika' ), 'section' => 'aurika_homepage_section', 'type' => 'checkbox' ) );
 
+	$wp_customize->add_setting( 'aurika_cat_candles_img', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'aurika_cat_candles_img', array(
+		'label'       => __( 'Scented Candles Image', 'aurika' ),
+		'description' => __( 'Upload or select a custom photo for the Scented Candles category card.', 'aurika' ),
+		'section'     => 'aurika_homepage_section',
+	) ) );
+
+	$wp_customize->add_setting( 'aurika_cat_diy_img', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'aurika_cat_diy_img', array(
+		'label'       => __( 'DIY Art Kits Image', 'aurika' ),
+		'description' => __( 'Upload or select a custom photo for the DIY Art Kits category card.', 'aurika' ),
+		'section'     => 'aurika_homepage_section',
+	) ) );
+
 	// ─────────────────────────────────────────────────────────
 	// 11. REVIEWS 4, 5, 6
 	// ─────────────────────────────────────────────────────────
