@@ -82,17 +82,37 @@ img.custom-logo, .custom-logo-link img, .site-logo img {
 /* 1000x1000 Uniform Product Image Standard (1:1 Ratio) & Dynamic Fit */
 .hunza-card-image-wrap,
 ul.products li.product .hunza-card-image-wrap,
-.woocommerce ul.products li.product a.woocommerce-LoopProduct-link,
-.woocommerce ul.products li.product .woocommerce-loop-product__link,
-.woocommerce ul.products li.product a:first-child,
-.woocommerce li.product a:first-child {
+.hunza-card-img-link {
   aspect-ratio: 1 / 1 !important;
   width: 100% !important;
   height: auto !important;
   max-height: none !important;
 }
+
+/* Ensure product card title and info NEVER get box backgrounds or aspect-ratios */
+.hunza-card-info,
+.hunza-card-title,
+.hunza-card-title a,
+.woocommerce-loop-product__title,
+.woocommerce-loop-product__title a {
+  background: transparent !important;
+  border: none !important;
+  aspect-ratio: auto !important;
+}
+
 .product-main-image-wrap {
   aspect-ratio: 1 / 1 !important;
+}
+
+/* Hero full view without cropping */
+.aurika-hero-wrap {
+  aspect-ratio: 1024 / 586 !important;
+  height: auto !important;
+}
+.hero-slide .aurika-hero-img,
+.aurika-hero-wrap .aurika-hero-img {
+  object-fit: cover !important;
+  object-position: center center !important;
 }
 <?php
 $aurika_prod_fit = get_theme_mod( 'aurika_product_image_fit', 'cover' );

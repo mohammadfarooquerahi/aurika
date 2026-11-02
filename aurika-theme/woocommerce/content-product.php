@@ -97,6 +97,33 @@ $is_on_sale   = $product->is_on_sale();
 			<div class="hunza-card-price">
 				<?php echo $price_html; ?>
 			</div>
+
+			<!-- Luxury Card Add to Cart Button -->
+			<div class="hunza-card-btn-wrap">
+				<?php if ( $product->is_type( 'variable' ) ) : ?>
+					<a href="<?php echo esc_url( $product_link ); ?>" class="btn-card-add-to-cart">
+						<span>Select Options</span>
+					</a>
+				<?php elseif ( $product->is_purchasable() && $product->is_in_stock() ) : ?>
+					<a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>"
+					   data-quantity="1"
+					   data-product_id="<?php echo esc_attr( $product_id ); ?>"
+					   data-product_sku="<?php echo esc_attr( $product->get_sku() ); ?>"
+					   class="btn-card-add-to-cart add_to_cart_button ajax_add_to_cart"
+					   aria-label="Add <?php echo esc_attr( $title ); ?> to cart">
+						<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="9" cy="21" r="1"></circle>
+							<circle cx="20" cy="21" r="1"></circle>
+							<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+						</svg>
+						<span>Add to Cart</span>
+					</a>
+				<?php else : ?>
+					<a href="<?php echo esc_url( $product_link ); ?>" class="btn-card-add-to-cart btn-card-out-of-stock">
+						<span>Out of Stock</span>
+					</a>
+				<?php endif; ?>
+			</div>
 		</div>
 
 	</div>
