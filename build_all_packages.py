@@ -202,7 +202,9 @@ add_action( 'admin_notices', function() {
     print(f"[OK] {os.path.basename(out_zip_path)}: {count} files ({size_mb:.2f} MB)")
 
 if __name__ == '__main__':
-    # 1. aurika-v89.zip (v6.29.0 — Direct Customizer image upload for Category Cards & WooCommerce Thumbnail support)
+    # 1. aurika-v90.zip (v6.30.0 — 1600x916 Native Hero Banner, Zero-crop on all devices, Left Empty-space Title/Subtitle/Button overlay)
+    create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v90.zip"), "aurika-v90")
+    # 2. aurika-v89.zip (v6.29.0 — Direct Customizer image upload for Category Cards & WooCommerce Thumbnail support)
     create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v89.zip"), "aurika-v89")
     # 2. aurika-v88.zip (v6.28.0 — Fixed Product Card Box bg, Fixed Hover Overlay, Aligned Add to Cart on all pages, Uncropped Hero Banner)
     create_theme_zip_with_folder(os.path.join(OUT_DIR, "aurika-v88.zip"), "aurika-v88")

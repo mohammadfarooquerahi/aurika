@@ -104,10 +104,12 @@ ul.products li.product .hunza-card-image-wrap,
   aspect-ratio: 1 / 1 !important;
 }
 
-/* Hero full view without cropping */
+/* Hero full view without cropping — 1600x916 native proportion */
 .aurika-hero-wrap {
-  aspect-ratio: 1024 / 586 !important;
+  aspect-ratio: 1600 / 916 !important;
   height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
 }
 .hero-slide .aurika-hero-img,
 .aurika-hero-wrap .aurika-hero-img {

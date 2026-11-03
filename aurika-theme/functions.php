@@ -127,7 +127,7 @@ function aurika_scripts() {
 		null
 	);
 
-	$theme_ver = wp_get_theme()->get( 'Version' ) ?: '6.29.0';
+	$theme_ver = wp_get_theme()->get( 'Version' ) ?: '6.30.0';
 	$css_file  = get_stylesheet_directory() . '/style.css';
 	$css_ver   = file_exists( $css_file ) ? $theme_ver . '.' . filemtime( $css_file ) : $theme_ver;
 
@@ -1202,6 +1202,9 @@ function aurika_get_home_template_html() {
 	// Hero settings
 	$slide1_img    = get_theme_mod( 'aurika_hero_slide1_img', get_template_directory_uri() . '/assets/images/hero-aurika.jpg' );
 	$slide2_img    = get_theme_mod( 'aurika_hero_slide2_img', get_template_directory_uri() . '/assets/images/hero-aurika.jpg' );
+	$hero_tagline  = get_theme_mod( 'aurika_hero_tagline', 'HANDCRAFTED LUXURY' );
+	$hero_title    = get_theme_mod( 'aurika_hero_title', 'Where Art Meets Elegance' );
+	$hero_subtitle = get_theme_mod( 'aurika_hero_subtitle', 'Pure scented candles & creative DIY art kits crafted with care.' );
 	$hero_btn_text = get_theme_mod( 'aurika_hero_btn_text', 'SHOP NOW' );
 	$hero_btn_url  = get_theme_mod( 'aurika_hero_btn_url', $shop_url );
 
@@ -1287,13 +1290,22 @@ function aurika_get_home_template_html() {
 
   </div>
 
-  <!-- Hero Content (always on top) -->
-  <div class="aurika-hero-content">
-    <a href="' . esc_url($hero_btn_url) . '" class="btn-hero-hunza">' . esc_html($hero_btn_text) . '</a>
-    <div class="aurika-hero-dots">
-      <span class="hero-dot is-active" data-slide="0"></span>
-      <span class="hero-dot" data-slide="1"></span>
+  <!-- Hero Content (Positioned in Left Empty Space) -->
+  <div class="aurika-hero-content-wrap">
+    <div class="aurika-hero-left">
+      ' . ( $hero_tagline ? '<span class="aurika-hero-tagline">' . esc_html( $hero_tagline ) . '</span>' : '' ) . '
+      ' . ( $hero_title ? '<h1 class="aurika-hero-title">' . wp_kses_post( $hero_title ) . '</h1>' : '' ) . '
+      ' . ( $hero_subtitle ? '<p class="aurika-hero-subtitle">' . esc_html( $hero_subtitle ) . '</p>' : '' ) . '
+      <div class="aurika-hero-btn-row">
+        <a href="' . esc_url( $hero_btn_url ) . '" class="btn-hero-hunza">' . esc_html( $hero_btn_text ) . '</a>
+      </div>
     </div>
+  </div>
+
+  <!-- Hero Slider Dots (Bottom Center) -->
+  <div class="aurika-hero-dots">
+    <span class="hero-dot is-active" data-slide="0"></span>
+    <span class="hero-dot" data-slide="1"></span>
   </div>
 
 </div>

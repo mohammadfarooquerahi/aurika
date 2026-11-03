@@ -2,7 +2,7 @@
 Theme Name: Aurika
 Theme URI: https://aurika.online
 Description: Custom theme for Aurika - Where Art Meets Elegance.
-Version: 6.29.0
+Version: 6.30.0
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -113,17 +113,12 @@ img {
   position: relative !important;
   width: 100% !important;
   height: auto !important;
-  aspect-ratio: 1024 / 586 !important; /* Matches natural 1024x586 hero image proportion */
-  max-height: 80vh !important;
-  min-height: 440px !important;
+  aspect-ratio: 1600 / 916 !important; /* Matches natural 1600x916 hero image proportion */
+  max-height: none !important;
+  min-height: auto !important;
   overflow: hidden !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  padding-bottom: 45px !important;
   margin: 0 !important;
-  background: #1a1a1a !important;
+  background: #f5f0eb !important;
   box-sizing: border-box !important;
 }
 
@@ -161,11 +156,11 @@ img {
 .hero-slide .aurika-hero-overlay {
   position: absolute !important;
   inset: 0 !important;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.06) 55%, rgba(0,0,0,0.52) 100%) !important;
+  background: linear-gradient(to right, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.02) 40%, rgba(0,0,0,0) 60%) !important;
   z-index: 2 !important;
 }
 
-/* Fallback for old single-image hero (not used anymore) */
+/* Fallback for old single-image hero */
 .aurika-hero-wrap .aurika-hero-img {
   position: absolute !important;
   inset: 0 !important;
@@ -180,66 +175,125 @@ img {
 .aurika-hero-overlay {
   position: absolute !important;
   inset: 0 !important;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.06) 55%, rgba(0, 0, 0, 0.52) 100%) !important;
+  background: linear-gradient(to right, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.02) 40%, rgba(0,0,0,0) 60%) !important;
   z-index: 2 !important;
 }
 
-.aurika-hero-content {
-  position: relative !important;
-  z-index: 10 !important;
-  text-align: center !important;
+/* Hero Content Overlaid on Left Empty Space */
+.aurika-hero-content-wrap {
+  position: absolute !important;
+  inset: 0 !important;
   display: flex !important;
-  flex-direction: column !important;
   align-items: center !important;
-  gap: 16px !important;
+  justify-content: flex-start !important;
+  z-index: 10 !important;
+  padding: 0 4% 0 6% !important;
+  pointer-events: none !important;
+  box-sizing: border-box !important;
 }
 
-.btn-hero-hunza {
+.aurika-hero-left {
+  max-width: 46% !important;
+  width: 46% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  pointer-events: auto !important;
+  box-sizing: border-box !important;
+}
+
+.aurika-hero-tagline {
   display: inline-block !important;
-  background: #000000 !important;
-  color: #ffffff !important;
-  padding: 16px 54px !important;
   font-family: var(--font-sans) !important;
-  font-size: 13px !important;
+  font-size: 11.5px !important;
   font-weight: 700 !important;
   letter-spacing: 3px !important;
   text-transform: uppercase !important;
+  color: #b8860b !important;
+  margin-bottom: 8px !important;
+}
+
+.aurika-hero-title {
+  font-family: var(--font-serif) !important;
+  font-size: clamp(22px, 3.2vw, 44px) !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  line-height: 1.16 !important;
+  margin: 0 0 10px !important;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5) !important;
+}
+
+.aurika-hero-subtitle {
+  font-family: var(--font-sans) !important;
+  font-size: clamp(12px, 1.15vw, 15px) !important;
+  font-weight: 400 !important;
+  color: #333333 !important;
+  line-height: 1.5 !important;
+  margin: 0 0 20px !important;
+  max-width: 380px !important;
+}
+
+.aurika-hero-btn-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.btn-hero-hunza {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #111111 !important;
+  color: #ffffff !important;
+  padding: 13px 36px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2.5px !important;
+  text-transform: uppercase !important;
   text-decoration: none !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border: 1px solid #111111 !important;
   border-radius: 4px !important;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18) !important;
+  cursor: pointer !important;
 }
 
 .btn-hero-hunza:hover {
   background: var(--gold) !important;
   color: #ffffff !important;
   border-color: var(--gold) !important;
-  transform: translateY(-3px) !important;
-  box-shadow: 0 14px 35px rgba(184, 134, 11, 0.5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 30px rgba(184, 134, 11, 0.4) !important;
 }
 
 .aurika-hero-dots {
+  position: absolute !important;
+  bottom: 16px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 12 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   gap: 8px !important;
-  margin-top: 4px !important;
+  pointer-events: auto !important;
 }
 
 .hero-dot {
   width: 7px !important;
   height: 7px !important;
   border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.4) !important;
+  background: rgba(0, 0, 0, 0.25) !important;
   display: inline-block !important;
   transition: all 0.3s ease !important;
   cursor: pointer !important;
 }
 
 .hero-dot.is-active {
-  background: #ffffff !important;
-  width: 20px !important;
+  background: #111111 !important;
+  width: 22px !important;
   height: 7px !important;
   border-radius: 4px !important;
 }
@@ -247,23 +301,84 @@ img {
 @media (max-width: 768px) {
   .aurika-hero-wrap {
     height: auto !important;
-    aspect-ratio: 1024 / 586 !important;
-    min-height: 280px !important;
-    padding-bottom: 30px !important;
+    aspect-ratio: 1600 / 916 !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+  .aurika-hero-content-wrap {
+    padding: 0 3% 0 4% !important;
+  }
+  .aurika-hero-left {
+    max-width: 48% !important;
+    width: 48% !important;
+  }
+  .aurika-hero-tagline {
+    font-size: 8.5px !important;
+    letter-spacing: 1.5px !important;
+    margin-bottom: 2px !important;
+  }
+  .aurika-hero-title {
+    font-size: clamp(13px, 3.8vw, 20px) !important;
+    margin-bottom: 4px !important;
+    line-height: 1.15 !important;
+  }
+  .aurika-hero-subtitle {
+    font-size: 9.5px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 8px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
   }
   .btn-hero-hunza {
-    padding: 12px 30px !important;
-    font-size: 11px !important;
-    letter-spacing: 2px !important;
+    padding: 7px 16px !important;
+    font-size: 9.5px !important;
+    letter-spacing: 1px !important;
+  }
+  .aurika-hero-dots {
+    bottom: 6px !important;
+    gap: 5px !important;
+  }
+  .hero-dot {
+    width: 5px !important;
+    height: 5px !important;
+  }
+  .hero-dot.is-active {
+    width: 14px !important;
+    height: 5px !important;
   }
 }
 
 @media (max-width: 480px) {
   .aurika-hero-wrap {
     height: auto !important;
-    aspect-ratio: 1024 / 586 !important;
-    min-height: 240px !important;
-    padding-bottom: 20px !important;
+    aspect-ratio: 1600 / 916 !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+  .aurika-hero-left {
+    max-width: 50% !important;
+    width: 50% !important;
+  }
+  .aurika-hero-tagline {
+    font-size: 7.5px !important;
+    letter-spacing: 1px !important;
+  }
+  .aurika-hero-title {
+    font-size: clamp(11px, 3.5vw, 15px) !important;
+    margin-bottom: 3px !important;
+  }
+  .aurika-hero-subtitle {
+    display: none !important;
+  }
+  .btn-hero-hunza {
+    padding: 5px 12px !important;
+    font-size: 8.5px !important;
+    letter-spacing: 0.8px !important;
+  }
+  .aurika-hero-dots {
+    bottom: 4px !important;
   }
 }
 
@@ -6225,13 +6340,9 @@ body[class*="cartflows"] .footer-bottom {
 @media (max-width: 600px) {
   .aurika-hero-wrap {
     height: auto !important;
-    aspect-ratio: 1024 / 586 !important;
-    min-height: 250px !important;
-  }
-  .btn-hero-hunza {
-    padding: 12px 28px !important;
-    font-size: 11px !important;
-    letter-spacing: 2px !important;
+    aspect-ratio: 1600 / 916 !important;
+    min-height: auto !important;
+    max-height: none !important;
   }
 }
 
@@ -7219,10 +7330,10 @@ body.page-id [class*="shop-2"] .woocommerce ul.products,
   /* 3. HERO SECTION ON MOBILE */
   .aurika-hero-wrap {
     height: auto !important;
-    aspect-ratio: 1024 / 586 !important;
-    min-height: 260px !important;
+    aspect-ratio: 1600 / 916 !important;
+    min-height: auto !important;
     max-height: none !important;
-    padding-bottom: 25px !important;
+    padding-bottom: 0 !important;
   }
 
   .aurika-hero-img {
@@ -7231,34 +7342,7 @@ body.page-id [class*="shop-2"] .woocommerce ul.products,
   }
 
   .aurika-hero-overlay {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.65) 100%) !important;
-  }
-
-  .aurika-hero-content {
-    bottom: 20px !important;
-    padding: 0 16px !important;
-  }
-
-  .btn-hero-hunza {
-    background: rgba(0,0,0,0.75) !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255,255,255,0.7) !important;
-    border-radius: 50px !important;
-    font-size: 11px !important;
-    letter-spacing: 2px !important;
-    padding: 10px 30px !important;
-    text-transform: uppercase !important;
-    font-weight: 600 !important;
-  }
-
-  .aurika-hero-dots {
-    margin-top: 10px !important;
-  }
-
-  .hero-dot {
-    width: 6px !important;
-    height: 6px !important;
-    margin: 0 3px !important;
+    background: linear-gradient(to right, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.02) 40%, rgba(0,0,0,0) 60%) !important;
   }
 
   /* 4. TRUST STRIP ON MOBILE (HUNZA CANDLE EXACT REPLICA) */
@@ -8632,8 +8716,8 @@ body.page-id [class*="shop-2"] .woocommerce ul.products,
 @media (max-width: 480px) {
   .aurika-hero-wrap {
     height: auto !important;
-    aspect-ratio: 1024 / 586 !important;
-    min-height: 220px !important;
+    aspect-ratio: 1600 / 916 !important;
+    min-height: auto !important;
     max-height: none !important;
   }
 

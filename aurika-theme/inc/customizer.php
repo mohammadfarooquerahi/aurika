@@ -78,6 +78,39 @@ function aurika_customize_register( $wp_customize ) {
 		'section'  => 'aurika_hero_section',
 	) ) );
 
+	$wp_customize->add_setting( 'aurika_hero_tagline', array(
+		'default'           => 'HANDCRAFTED LUXURY',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'aurika_hero_tagline', array(
+		'label'       => __( 'Hero Small Tagline (Above Title)', 'aurika' ),
+		'description' => __( 'Appears on the left empty space of the banner', 'aurika' ),
+		'section'     => 'aurika_hero_section',
+		'type'        => 'text',
+	) );
+
+	$wp_customize->add_setting( 'aurika_hero_title', array(
+		'default'           => 'Where Art Meets Elegance',
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+	$wp_customize->add_control( 'aurika_hero_title', array(
+		'label'       => __( 'Hero Main Title', 'aurika' ),
+		'description' => __( 'Large luxury heading on the left side (supports &lt;br&gt; for line breaks)', 'aurika' ),
+		'section'     => 'aurika_hero_section',
+		'type'        => 'text',
+	) );
+
+	$wp_customize->add_setting( 'aurika_hero_subtitle', array(
+		'default'           => 'Pure scented candles & creative DIY art kits crafted with care.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'aurika_hero_subtitle', array(
+		'label'       => __( 'Hero Subtitle Description', 'aurika' ),
+		'description' => __( 'Short supporting description below the main title', 'aurika' ),
+		'section'     => 'aurika_hero_section',
+		'type'        => 'text',
+	) );
+
 	$wp_customize->add_setting( 'aurika_hero_btn_text', array(
 		'default'           => 'SHOP NOW',
 		'sanitize_callback' => 'sanitize_text_field',
